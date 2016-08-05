@@ -1,0 +1,22 @@
+{
+  "refundReferences": {
+    "merchantReference": "AcmeOrder0001"
+  },
+  "amountOfMoney": {
+    "currencyCode": "EUR",
+    "amount": 1
+  },
+  "customer": {
+    "address": {
+      "countryCode": "US",
+      "name": {
+        "surname": "Coyote"
+      }
+    },
+    "contactDetails": {
+      "emailAddress": "wile.e.coyote@acmelabs.com",
+      "emailMessageType": "html"
+    }
+  },
+  "refundDate": "20140306"
+}

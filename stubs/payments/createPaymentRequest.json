@@ -1,0 +1,98 @@
+{
+  "order": {
+    "amountOfMoney": {
+      "currencyCode": "EUR",
+      "amount": 2980
+    },
+    "customer": {
+      "merchantCustomerId": "1234",
+      "personalInformation": {
+        "name": {
+          "title": "Mr.",
+          "firstName": "Wile",
+          "surnamePrefix": "E.",
+          "surname": "Coyote"
+        },
+        "gender": "male",
+        "dateOfBirth": "19490917"
+      },
+      "companyInformation": {
+        "name": "Acme Labs"
+      },
+      "locale": "en_GB",
+      "billingAddress": {
+        "street": "Desertroad",
+        "houseNumber": "13",
+        "additionalInfo": "b",
+        "zip": "84536",
+        "city": "Monument Valley",
+        "state": "Utah",
+        "countryCode": "US"
+      },
+      "shippingAddress": {
+        "name": {
+          "title": "Miss",
+          "firstName": "Road",
+          "surname": "Runner"
+        },
+        "street": "Desertroad",
+        "houseNumber": "1",
+        "additionalInfo": "Suite II",
+        "zip": "84536",
+        "city": "Monument Valley",
+        "state": "Utah",
+        "countryCode": "US"
+      },
+      "contactDetails": {
+        "emailAddress": "wile.e.coyote@acmelabs.com",
+        "phoneNumber": "+1234567890",
+        "faxNumber": "+1234567891",
+        "emailMessageType": "html"
+      },
+      "vatNumber": "1234AB5678CD"
+    },
+    "references": {
+      "merchantOrderId": 123456,
+      "merchantReference": "AcmeOrder0001",
+      "invoiceData": {
+        "invoiceNumber": "000000123",
+        "invoiceDate": "20140306191500"
+      },
+      "descriptor": "Fast and Furry-ous"
+    },
+    "items": [
+      {
+        "amountOfMoney": {
+          "currencyCode": "EUR",
+          "amount": 2500
+        },
+        "invoiceData": {
+          "nrOfItems": "1",
+          "pricePerItem": 2500,
+          "description": "ACME Super Outfit"
+        }
+      },
+      {
+        "amountOfMoney": {
+          "currencyCode": "EUR",
+          "amount": 480
+        },
+        "invoiceData": {
+          "nrOfItems": "12",
+          "pricePerItem": 40,
+          "description": "Aspirin"
+        }
+      }
+    ]
+  },
+  "cardPaymentMethodSpecificInput": {
+    "paymentProductId": 1,
+    "skipAuthentication": false,
+    "card": {
+      "cvv": "123",
+      "cardNumber": "4567350000427977",
+      "expiryDate": "1220",
+      "cardholderName": "Wile E. Coyote"
+    }
+  }
+}

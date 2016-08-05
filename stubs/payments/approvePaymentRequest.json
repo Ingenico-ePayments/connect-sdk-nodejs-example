@@ -1,0 +1,12 @@
+{
+  "directDebitPaymentMethodSpecificInput": {
+    "token": "bfa8a7e4-4530-455a-858d-204ba2afb77e",
+    "dateCollect": "20150201"
+  },
+  "order": {
+    "references": {
+      "merchantReference": "AcmeOrder0001"
+    }
+  },
+  "amount": 2980
+}

@@ -1,0 +1,5 @@
+node_modules
+logfile.txt
+config.json
+.vscode
+.idea

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ingenico JavaScript S2S example</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    .output-wrapper {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>JavaScript S2S SDK explorer</h1>
+        <p>You can explore the various calls of the JavaScript S2S SDK by clicking the method in the menu; the response will
+          be rendered when the call finishes. This tool is for development use only and must never be made public.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  HostedCheckouts
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/hostedcheckout" href="#">Create hosted checkout</a></li>
+                <li class="list-group-item"><a data-href="/hostedcheckoutstatus" href="#" data-input="hostedCheckoutId">Get hosted checkout status</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Payments
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/payments/createPayment" href="#">Create payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/retrievePayment" href="#" data-input="paymentId">Retrieve payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/approvesChallengedPayment" href="#" data-input="paymentId">Approves challenged payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/capturePayment" href="#" data-input="paymentId">Capture payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/tokenizePayment" href="#" data-input="paymentId">Tokenize payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/cancelPayment" href="#" data-input="paymentId">Cancel payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/createRefund" href="#" data-input="paymentId">Create refund</a></li>
+                <li class="list-group-item"><a data-href="/payments/cancelApprovalPayment" href="#" data-input="paymentId">Cancel approval payment</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  Payouts
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/payouts/createPayout" href="#">Create payout</a></li>
+                <li class="list-group-item"><a data-href="/payouts/retrievePayout" href="#" data-input="payoutId">Retrieve payout</a></li>
+                <li class="list-group-item"><a data-href="/payouts/approvesPayout" href="#" data-input="payoutId">Approve payout</a></li>
+                <li class="list-group-item"><a data-href="/payouts/cancelApprovalPayout" href="#" data-input="payoutId">Undo approve payout</a></li>
+                <li class="list-group-item"><a data-href="/payouts/cancelPayout" href="#" data-input="payoutId">Cancel payout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                  Products
+                </a>
+              </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/products/retrievePaymentProducts" href="#">Retrieve payment products</a></li>
+                <li class="list-group-item"><a data-href="/products/retrievePaymentProductFields" data-input="paymentProductId" href="#">Retrieve payment product fields</a></li>
+                <li class="list-group-item"><a data-href="/products/retrievePaymentProductFieldDirectory" data-input="paymentProductId" href="#">Retrieve payment product directory</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFive">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                  Product Groups
+                </a>
+              </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroups" href="#">Retrieve payment product groups</a></li>
+                <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroup" data-input="paymentProductGroupId" href="#">Retrieve payment product group</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingSix">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                  Refunds
+                </a>
+              </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/refunds/retrieveRefund" data-input="refundId" href="#">Retrieve refund</a></li>
+                <li class="list-group-item"><a data-href="/refunds/approveRefund" data-input="refundId" href="#">Approve refund</a></li>
+                <li class="list-group-item"><a data-href="/refunds/undoApproveRefund" data-input="refundId" href="#">Undo approve refund</a></li>
+                <li class="list-group-item"><a data-href="/refunds/cancelRefund" data-input="refundId" href="#">Cancel refund</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingSeven">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                  Risk Assessments
+                </a>
+              </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/riskassessments/card" href="#">Risk-assess card</a></li>
+                <li class="list-group-item"><a data-href="/riskassessments/bankaccount" href="#">Risk-assess bank account</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingEight">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                  Services
+                </a>
+              </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/services/testconnection" href="#">Test connection</a></li>
+                <li class="list-group-item"><a data-href="/services/retrieveIINdetails" href="#">Retrieve IIN details</a></li>
+                <li class="list-group-item"><a data-href="/services/convertbankaccount" href="#">Convert Bankaccount</a></li>
+                <li class="list-group-item"><a data-href="/services/convertAmount" href="#">Convert amount</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingNine">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                  Sessions
+                </a>
+              </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/sessions/createSession" href="#">Create session</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTen">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                  Tokens
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/tokens/createToken" href="#">Create token</a></li>
+                <li class="list-group-item"><a data-href="/tokens/retrieveToken" href="#" data-input="tokenId">Retrieve token</a></li>
+                <li class="list-group-item"><a data-href="/tokens/updateToken" href="#" data-input="tokenId">Update token</a></li>
+                <li class="list-group-item"><a data-href="/tokens/deleteToken" href="#" data-input="tokenId">Delete token</a></li>
+                <li class="list-group-item"><a data-href="/tokens/approveSepaDirectdebit" href="#" data-input="tokenId">Approve SEPA DD mandate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-9 output-wrapper">
+        <p>Status: <span id="outputStatusCode"></span>, Roundtrip: <span id="roundTrip"></span> ms</p>
+        <pre id="output"></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="themodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Enter input</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="inputs">
+            <div class="form-group">
+              <label for="i1" class="col-sm-3 control-label"></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="i1">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="sendOverlay">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      var clicked = '';
+
+      var doSend = function (url, param) {
+      var start = new Date().getTime();
+        if (param) {
+          url = url + "/" + param;
+        }
+        $(".output-wrapper").show();
+        $("#output").text('Loading ...');
+        $("#roundTrip").text('-');
+        $("#outputStatusCode").text('Loading ...');
+        $.getJSON(url, function (json) {
+          $("#output").text(JSON.stringify(json, null, '  '));
+        }).fail(function (error) {
+          $("#output").text(JSON.stringify(error.responseJSON, null, '  '));
+        }).always(function(jqxhr, textStatus, _jqxhr) {
+          if (textStatus === "success" || textStatus === "nocontent") {
+            // the always callback has parameters based on the statusText
+            // jqXHR.always(function( data|jqXHR, textStatus, jqXHR|errorThrown ) { });
+            // so if the status is 'success' I copy the jqxhr.
+            jqxhr = _jqxhr;
+          }
+          $("#outputStatusCode").text(jqxhr.status + " " + jqxhr.statusText);
+          $("#roundTrip").text(new Date().getTime() - start);
+        });
+      };
+
+      $("a[data-href]").click(function (e) {
+        e.preventDefault();
+        if ($(this).data("input")) {
+          // fill popup
+          var property = $(this).data("input");
+          clicked = $(this).data("href");
+          $("#inputs label").text(property);
+          $("#inputs input").attr("placeholder", property).data('key', property);
+          $("#themodal").modal({backdrop: 'static'});
+        } else {
+          doSend($(this).data("href"));
+        }
+      });
+
+      $('#themodal').on('shown.bs.modal', function () {
+        $('#inputs input').focus();
+      });
+
+      $('#inputs').on("submit", function (e) {
+        e.preventDefault();
+        var filled = $('#inputs input').val();
+        doSend(clicked, filled);
+        $("#themodal").modal('hide');
+      });
+
+      $("#sendOverlay").on('click', function (e) {
+        var filled = $('#inputs input').val();
+        doSend(clicked, filled);
+        $("#themodal").modal('hide');
+      });
+    });
+  </script>
+</body>
+
+</html>

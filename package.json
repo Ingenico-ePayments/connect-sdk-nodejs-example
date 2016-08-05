@@ -1,0 +1,27 @@
+{
+  "name": "connect-sdk-nodejs-example",
+  "version": "1.0.0",
+  "description": "An example application for connect-sdk-nodejs",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "log4js": "^0.6.33",
+    "marko": "^3.0.5",
+    "connect-sdk-nodejs": "1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ingenico-ePayments/connect-sdk-nodejs-example.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ingenico ePayments",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/Ingenico-ePayments/connect-sdk-nodejs-example/issues"
+  },
+  "homepage": "https://github.com/Ingenico-ePayments/connect-sdk-nodejs-example#readme"
+}
