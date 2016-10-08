@@ -7,7 +7,7 @@
     "express": "^4.13.4",
     "log4js": "^0.6.33",
     "marko": "^3.0.5",
-    "connect-sdk-nodejs": "1.0.0"
+    "connect-sdk-nodejs": "1.1.0"
   },
   "devDependencies": {},
   "repository": {
