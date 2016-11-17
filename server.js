@@ -34,6 +34,14 @@ connectSdk.init({
   logger: logger, // if undefined console.log will be used
   apiKeyId: config.apiKeyId,
   secretApiKey: config.secretApiKey
+  /*
+  ,intergrator: "Ingenico.Integrator"
+  ,shoppingCartExtension: {
+    "creator":"Ingenico.Creator",
+    "name":"Extension",
+    "version":"1.0"
+  }
+  */
 });
 
 // DEMO app
