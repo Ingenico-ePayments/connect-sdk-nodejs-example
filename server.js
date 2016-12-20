@@ -180,6 +180,16 @@ app.get('/products/retrievePaymentProductFields/:paymentProductId', function (re
     render(res, error, sdkResponse);
   });
 });
+app.get('/products/networks/:paymentProductId', function (req, res) {
+  connectSdk.products.networks(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/products/publickey/:paymentProductId', function (req, res) {
+  connectSdk.products.publicKey(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/products/retrievePaymentProductFieldDirectory/:paymentProductId', function (req, res) {
   var clientUserAgent = req.headers["user-agent"];
   paymentContext.extraHeaders = [
