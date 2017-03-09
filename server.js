@@ -35,7 +35,7 @@ connectSdk.init({
   apiKeyId: config.apiKeyId,
   secretApiKey: config.secretApiKey
   /*
-  ,intergrator: "Ingenico.Integrator"
+  ,integrator: "Ingenico.Integrator"
   ,shoppingCartExtension: {
     "creator":"Ingenico.Creator",
     "name":"Extension",
