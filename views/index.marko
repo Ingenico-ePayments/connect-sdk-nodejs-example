@@ -24,14 +24,28 @@
       <div class="col-xs-12 col-md-3">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingCaptures">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCaptures" aria-expanded="true" aria-controls="collapseCaptures">
+                  Captures
+                </a>
+              </h4>
+            </div>
+            <div id="collapseCaptures" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCaptures">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/captures/get" href="#" data-input="captureId">Get capture</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingHostedCheckouts">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHostedCheckouts" aria-expanded="true" aria-controls="collapseHostedCheckouts">
                   HostedCheckouts
                 </a>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseHostedCheckouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHostedCheckouts">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/hostedcheckout" href="#">Create hosted checkout</a></li>
                 <li class="list-group-item"><a data-href="/hostedcheckoutstatus" href="#" data-input="hostedCheckoutId">Get hosted checkout status</a></li>
@@ -39,19 +53,21 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingPayments">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePayments" aria-expanded="true" aria-controls="collapsePayments">
                   Payments
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div id="collapsePayments" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingPayments">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/payments/createPayment" href="#">Create payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/retrievePayment" href="#" data-input="paymentId">Retrieve payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/approvesChallengedPayment" href="#" data-input="paymentId">Approves challenged payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/approvePayment" href="#" data-input="paymentId">Approve payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/capturePayment" href="#" data-input="paymentId">Capture payment</a></li>
+                <li class="list-group-item"><a data-href="/payments/getPaymentCaptures" href="#" data-input="paymentId">Get captures of payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/tokenizePayment" href="#" data-input="paymentId">Tokenize payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/cancelPayment" href="#" data-input="paymentId">Cancel payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/createRefund" href="#" data-input="paymentId">Create refund</a></li>
@@ -60,14 +76,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
+            <div class="panel-heading" role="tab" id="headingPayouts">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePayouts" aria-expanded="true" aria-controls="collapsePayouts">
                   Payouts
                 </a>
               </h4>
             </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div id="collapsePayouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPayouts">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/payouts/createPayout" href="#">Create payout</a></li>
                 <li class="list-group-item"><a data-href="/payouts/retrievePayout" href="#" data-input="payoutId">Retrieve payout</a></li>
@@ -78,14 +94,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingFour">
+            <div class="panel-heading" role="tab" id="headingProducts">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProducts" aria-expanded="true" aria-controls="collapseProducts">
                   Products
                 </a>
               </h4>
             </div>
-            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div id="collapseProducts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProducts">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/products/retrievePaymentProducts" href="#">Retrieve payment products</a></li>
                 <li class="list-group-item"><a data-href="/products/retrievePaymentProductFields" data-input="paymentProductId" href="#">Retrieve payment product fields</a></li>
@@ -96,14 +112,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingFive">
+            <div class="panel-heading" role="tab" id="headingProductGroups">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProductGroups" aria-expanded="true" aria-controls="collapseProductGroups">
                   Product Groups
                 </a>
               </h4>
             </div>
-            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div id="collapseProductGroups" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProductGroups">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroups" href="#">Retrieve payment product groups</a></li>
                 <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroup" data-input="paymentProductGroupId" href="#">Retrieve payment product group</a></li>
@@ -111,14 +127,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSix">
+            <div class="panel-heading" role="tab" id="headingRefunds">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRefunds" aria-expanded="true" aria-controls="collapseRefunds">
                   Refunds
                 </a>
               </h4>
             </div>
-            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div id="collapseRefunds" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRefunds">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/refunds/retrieveRefund" data-input="refundId" href="#">Retrieve refund</a></li>
                 <li class="list-group-item"><a data-href="/refunds/approveRefund" data-input="refundId" href="#">Approve refund</a></li>
@@ -128,14 +144,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSeven">
+            <div class="panel-heading" role="tab" id="headingRiskAssessments">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRiskAssessments" aria-expanded="true" aria-controls="collapseRiskAssessments">
                   Risk Assessments
                 </a>
               </h4>
             </div>
-            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div id="collapseRiskAssessments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRiskAssessments">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/riskassessments/card" href="#">Risk-assess card</a></li>
                 <li class="list-group-item"><a data-href="/riskassessments/bankaccount" href="#">Risk-assess bank account</a></li>
@@ -143,14 +159,14 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingEight">
+            <div class="panel-heading" role="tab" id="headingServices">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseServices" aria-expanded="true" aria-controls="collapseServices">
                   Services
                 </a>
               </h4>
             </div>
-            <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div id="collapseServices" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingServices">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/services/testconnection" href="#">Test connection</a></li>
                 <li class="list-group-item"><a data-href="/services/retrieveIINdetails" href="#">Retrieve IIN details</a></li>
@@ -160,28 +176,28 @@
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingNine">
+            <div class="panel-heading" role="tab" id="headingSessions">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSessions" aria-expanded="true" aria-controls="collapseSessions">
                   Sessions
                 </a>
               </h4>
             </div>
-            <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+            <div id="collapseSessions" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSessions">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/sessions/createSession" href="#">Create session</a></li>
               </ul>
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTen">
+            <div class="panel-heading" role="tab" id="headingTokens">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTokens" aria-expanded="true" aria-controls="collapseTokens">
                   Tokens
                 </a>
               </h4>
             </div>
-            <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+            <div id="collapseTokens" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTokens">
               <ul class="list-group">
                 <li class="list-group-item"><a data-href="/tokens/createToken" href="#">Create token</a></li>
                 <li class="list-group-item"><a data-href="/tokens/retrieveToken" href="#" data-input="tokenId">Retrieve token</a></li>

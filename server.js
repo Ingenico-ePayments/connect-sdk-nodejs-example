@@ -10,6 +10,7 @@ var logger = require('./util/logger');
 var createHostedCheckoutStub = require('./stubs/hostedcheckouts/createHostedCheckout.json');
 var createPaymentStub = require('./stubs/payments/createPaymentRequest.json');
 var approvePaymentRequestStub = require('./stubs/payments/approvePaymentRequest.json');
+var capturePaymentRequestStub = require('./stubs/payments/capturePaymentRequest.json');
 var tokenizePaymentStub = require('./stubs/payments/tokenizePaymentRequest.json');
 var createRefundStub = require('./stubs/payments/createRefundRequest.json');
 var createPayoutStub = require('./stubs/payouts/createPayoutRequest.json');
@@ -85,6 +86,13 @@ var paymentContext = {
 
 // all SDK methods; grouped by API method
 
+// captures
+app.get('/captures/get/:captureId', function (req, res) {
+  connectSdk.captures.get(merchantId, req.params.captureId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
 // hosted checkouts
 app.get('/hostedcheckout', function (req, res) {
   connectSdk.hostedcheckouts.create(merchantId, createHostedCheckoutStub, null, function (error, sdkResponse) {
@@ -116,8 +124,18 @@ app.get('/payments/approvesChallengedPayment/:paymentId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/payments/capturePayment/:paymentId', function (req, res) {
+app.get('/payments/approvePayment/:paymentId', function (req, res) {
   connectSdk.payments.approve(merchantId, req.params.paymentId, approvePaymentRequestStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/capturePayment/:paymentId', function (req, res) {
+  connectSdk.payments.capture(merchantId, req.params.paymentId, capturePaymentRequestStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/getPaymentCaptures/:paymentId', function (req, res) {
+  connectSdk.payments.captures(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
