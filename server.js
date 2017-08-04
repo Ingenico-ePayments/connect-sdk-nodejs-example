@@ -12,6 +12,7 @@ var createPaymentStub = require('./stubs/payments/createPaymentRequest.json');
 var approvePaymentRequestStub = require('./stubs/payments/approvePaymentRequest.json');
 var capturePaymentRequestStub = require('./stubs/payments/capturePaymentRequest.json');
 var tokenizePaymentStub = require('./stubs/payments/tokenizePaymentRequest.json');
+var completePaymentStub = require('./stubs/payments/completePaymentRequest.json');
 var createRefundStub = require('./stubs/payments/createRefundRequest.json');
 var createPayoutStub = require('./stubs/payouts/createPayoutRequest.json');
 var approvePayoutStub = require('./stubs/payouts/approvePayoutRequest.json');
@@ -40,7 +41,8 @@ connectSdk.init({
   ,shoppingCartExtension: {
     "creator":"Ingenico.Creator",
     "name":"Extension",
-    "version":"1.0"
+    "version":"1.0",
+    "extensionId":"ExtensionId"
   }
   */
 });
@@ -156,6 +158,16 @@ app.get('/payments/createRefund/:paymentId', function (req, res) {
 });
 app.get('/payments/cancelApprovalPayment/:paymentId', function (req, res) {
   connectSdk.payments.cancelapproval(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/thirdPartyStatus/:paymentId', function (req, res) {
+  connectSdk.payments.thirdPartyStatus(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/completePayment/:paymentId', function (req, res) {
+  connectSdk.payments.complete(merchantId, req.params.paymentId, completePaymentStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
