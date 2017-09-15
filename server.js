@@ -108,6 +108,16 @@ app.get('/hostedcheckoutstatus/:hostedCheckoutId', function (req, res) {
 });
 
 // payments
+app.get('/payments/findPayments/:merchantReference', function (req, res) {
+  var queryParams = {
+    limit: 10,
+    offset: 0,
+    merchantReference: req.params.merchantReference
+  };
+  connectSdk.payments.find(merchantId, queryParams, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/payments/createPayment', function (req, res) {
   paymentContext.idemPotence = {
     key: 'idempotence'
@@ -173,6 +183,16 @@ app.get('/payments/completePayment/:paymentId', function (req, res) {
 });
 
 // payouts
+app.get('/payouts/findPayouts/:merchantReference', function (req, res) {
+  var queryParams = {
+    limit: 10,
+    offset: 0,
+    merchantReference: req.params.merchantReference
+  };
+  connectSdk.payouts.find(merchantId, queryParams, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/payouts/createPayout', function (req, res) {
   connectSdk.payouts.create(merchantId, createPayoutStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
@@ -243,6 +263,16 @@ app.get('/products/retrievePaymentProductGroup/:paymentProductGroupId', function
 });
 
 // refunds
+app.get('/refunds/findRefunds/:merchantReference', function (req, res) {
+  var queryParams = {
+    limit: 10,
+    offset: 0,
+    merchantReference: req.params.merchantReference
+  };
+  connectSdk.refunds.find(merchantId, queryParams, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/refunds/retrieveRefund/:refundId', function (req, res) {
   connectSdk.refunds.get(merchantId, req.params.refundId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);

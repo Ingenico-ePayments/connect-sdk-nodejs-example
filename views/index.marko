@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Ingenico JavaScript S2S example</title>
+  <title>Ingenico Node.js S2S example</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
     .output-wrapper {
@@ -15,8 +15,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h1>JavaScript S2S SDK explorer</h1>
-        <p>You can explore the various calls of the JavaScript S2S SDK by clicking the method in the menu; the response will
+        <h1>Node.js S2S SDK explorer</h1>
+        <p>You can explore the various calls of the Node.js S2S SDK by clicking the method in the menu; the response will
           be rendered when the call finishes. This tool is for development use only and must never be made public.</p>
       </div>
     </div>
@@ -62,6 +62,7 @@
             </div>
             <div id="collapsePayments" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingPayments">
               <ul class="list-group">
+                <li class="list-group-item"><a data-href="/payments/findPayments" href="#" data-input="merchantReference">Find payments</a></li>
                 <li class="list-group-item"><a data-href="/payments/createPayment" href="#">Create payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/retrievePayment" href="#" data-input="paymentId">Retrieve payment</a></li>
                 <li class="list-group-item"><a data-href="/payments/approvesChallengedPayment" href="#" data-input="paymentId">Approves challenged payment</a></li>
@@ -87,6 +88,7 @@
             </div>
             <div id="collapsePayouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPayouts">
               <ul class="list-group">
+                <li class="list-group-item"><a data-href="/payouts/findPayouts" href="#" data-input="merchantReference">Find payouts</a></li>
                 <li class="list-group-item"><a data-href="/payouts/createPayout" href="#">Create payout</a></li>
                 <li class="list-group-item"><a data-href="/payouts/retrievePayout" href="#" data-input="payoutId">Retrieve payout</a></li>
                 <li class="list-group-item"><a data-href="/payouts/approvesPayout" href="#" data-input="payoutId">Approve payout</a></li>
@@ -138,6 +140,7 @@
             </div>
             <div id="collapseRefunds" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRefunds">
               <ul class="list-group">
+                <li class="list-group-item"><a data-href="/refunds/findRefunds" href="#" data-input="merchantReference">Find refunds</a></li>
                 <li class="list-group-item"><a data-href="/refunds/retrieveRefund" data-input="refundId" href="#">Retrieve refund</a></li>
                 <li class="list-group-item"><a data-href="/refunds/approveRefund" data-input="refundId" href="#">Approve refund</a></li>
                 <li class="list-group-item"><a data-href="/refunds/undoApproveRefund" data-input="refundId" href="#">Undo approve refund</a></li>

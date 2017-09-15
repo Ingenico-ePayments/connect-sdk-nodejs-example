@@ -9,7 +9,7 @@ The JavaScript SDK example helps you to communicate with the [Ingenico Connect](
 * example of how to intergrate the SDK in a node.js environment
 * example on how to implement your own logger
 
-See the [Ingenico ePayments Developer Hub](https://developer.globalcollect.com/documentation/sdk/server/nodejs/) for more information on how to use the SDK.
+See the [Ingenico ePayments Developer Hub](https://epayments.developer-ingenico.com/documentation/sdk/server/nodejs/) for more information on how to use the SDK.
 
 ## Structure of this repository
 
