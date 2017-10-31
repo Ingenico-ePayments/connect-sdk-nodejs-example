@@ -16,6 +16,7 @@ var completePaymentStub = require('./stubs/payments/completePaymentRequest.json'
 var createRefundStub = require('./stubs/payments/createRefundRequest.json');
 var createPayoutStub = require('./stubs/payouts/createPayoutRequest.json');
 var approvePayoutStub = require('./stubs/payouts/approvePayoutRequest.json');
+var getCustomerDetailsStub = require('./stubs/products/getCustomerDetailsRequest.json');
 var approveRefundStub = require('./stubs/refunds/approveRefundRequest.json');
 var riskAssessmentCardStub = require('./stubs/riskassessments/riskAssessmentCardRequest.json');
 var riskAssessmentBankAccountStub = require('./stubs/riskassessments/riskAssessmentBankAccountRequest.json');
@@ -246,6 +247,12 @@ app.get('/products/retrievePaymentProductFieldDirectory/:paymentProductId', func
     { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
   ];
   connectSdk.products.directory(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/products/getCustomerDetails/:paymentProductId/:fiscalNumber', function (req, res) {
+  var body = getCustomerDetailsStub.values[0].value = req.params.fiscalNumber;
+  connectSdk.products.customerDetails(merchantId, req.params.paymentProductId, getCustomerDetailsStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });

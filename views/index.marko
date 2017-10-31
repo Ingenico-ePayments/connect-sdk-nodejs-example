@@ -112,6 +112,7 @@
                 <li class="list-group-item"><a data-href="/products/networks" data-input="paymentProductId" href="#">Get supported networks</a></li>
                 <li class="list-group-item"><a data-href="/products/publickey" data-input="paymentProductId" href="#">Get public key</a></li>
                 <li class="list-group-item"><a data-href="/products/retrievePaymentProductFieldDirectory" data-input="paymentProductId" href="#">Retrieve payment product directory</a></li>
+                <li class="list-group-item"><a data-href="/products/getCustomerDetails" data-input="paymentProductId, fiscalNumber" href="#">Get customer details</a></li>
               </ul>
             </div>
           </div>
@@ -230,12 +231,6 @@
         </div>
         <div class="modal-body">
           <form class="form-horizontal" id="inputs">
-            <div class="form-group">
-              <label for="i1" class="col-sm-3 control-label"></label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="i1">
-              </div>
-            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -252,10 +247,14 @@
     $(function () {
       var clicked = '';
 
-      var doSend = function (url, param) {
+      var inputValues = {};
+
+      var doSend = function (url, params) {
       var start = new Date().getTime();
-        if (param) {
-          url = url + "/" + param;
+        if (params) {
+          $.each(params, function (index, param) {
+            url = url + "/" + param;
+          });
         }
         $(".output-wrapper").show();
         $("#output").text('Loading ...');
@@ -281,10 +280,24 @@
         e.preventDefault();
         if ($(this).data("input")) {
           // fill popup
-          var property = $(this).data("input");
+          var properties = $(this).data("input").split(",");
           clicked = $(this).data("href");
-          $("#inputs label").text(property);
-          $("#inputs input").attr("placeholder", property).data('key', property);
+
+          // store existing input values
+          $("#inputs input").each(function (index, input) {
+            inputValues[$(input).data("key")] = $(input).val();
+          });
+          // re-create input modal content
+          var $inputs = $("#inputs").empty();
+          $.each(properties, function (index, property) {
+            var id = "i" + (index + 1);
+            var prop = property.trim();
+            var $label = $("<label>").attr("for", id).addClass("col-sm-3 control-label").text(prop);
+            var $input = $("<input>").attr({ "type": "text", "id": id, "placeholder": prop }).addClass("form-control").data("key", prop).val(inputValues[prop]);
+            var $formGroup = $("<div>").addClass("form-group").append($label).append($("<div>").addClass("col-sm-9").append($input));
+            $inputs.append($formGroup);
+          });
+
           $("#themodal").modal({backdrop: 'static'});
         } else {
           doSend($(this).data("href"));
@@ -292,19 +305,22 @@
       });
 
       $('#themodal').on('shown.bs.modal', function () {
-        $('#inputs input').focus();
+        $('#inputs #i1').focus();
       });
 
-      $('#inputs').on("submit", function (e) {
-        e.preventDefault();
-        var filled = $('#inputs input').val();
-        doSend(clicked, filled);
-        $("#themodal").modal('hide');
+      $('#inputs').on("keyup", "input", function (e) {
+        if (e.which == 13) {
+          e.preventDefault();
+          $("#sendOverlay").click();
+        }
       });
 
       $("#sendOverlay").on('click', function (e) {
-        var filled = $('#inputs input').val();
-        doSend(clicked, filled);
+        var params = [];
+        $('#inputs input').each(function (index, input) {
+            params.push($(input).val());
+        });
+        doSend(clicked, params);
         $("#themodal").modal('hide');
       });
     });
