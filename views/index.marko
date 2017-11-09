@@ -132,6 +132,25 @@
             </div>
           </div>
           <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingMandates">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMandates" aria-expanded="true" aria-controls="collapseMandates">
+                  Mandates
+                </a>
+              </h4>
+            </div>
+            <div id="collapseMandates" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMandates">
+              <ul class="list-group">
+                <li class="list-group-item"><a data-href="/mandates/createMandate" href="#">Create a mandate</a></li>
+                <li class="list-group-item"><a data-href="/mandates/createOrUpdateMandate" href="#" data-input="uniqueMandateReference">Create or update a mandate</a></li>
+                <li class="list-group-item"><a data-href="/mandates/getMandate" href="#" data-input="uniqueMandateReference">Get a mandate</a></li>
+                <li class="list-group-item"><a data-href="/mandates/blockMandate" href="#" data-input="uniqueMandateReference">Block a mandate</a></li>
+                <li class="list-group-item"><a data-href="/mandates/unblockMandate" href="#" data-input="uniqueMandateReference">Unblock a mandate</a></li>
+                <li class="list-group-item"><a data-href="/mandates/revokeMandate" href="#" data-input="uniqueMandateReference">Revoke a mandate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingRefunds">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRefunds" aria-expanded="true" aria-controls="collapseRefunds">

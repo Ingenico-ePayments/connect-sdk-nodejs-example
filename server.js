@@ -26,6 +26,8 @@ var createSessionStub = require('./stubs/sessions/createSessionRequest.json');
 var createTokenStub = require('./stubs/tokens/createTokenRequest.json');
 var updateTokenStub = require('./stubs/tokens/updateTokenRequest.json');
 var approvesepadirectdebitStub = require('./stubs/tokens/approvesepadirectdebitRequest.json');
+var createMandateStub = require('./stubs/mandates/createMandate.json');
+var createWithMandateReferenceStub = require('./stubs/mandates/createWithMandateReference.json');
 
 var config = require('./config.json');
 
@@ -265,6 +267,38 @@ app.get('/products/retrievePaymentProductGroups', function (req, res) {
 });
 app.get('/products/retrievePaymentProductGroup/:paymentProductGroupId', function (req, res) {
   connectSdk.productgroups.get(merchantId, req.params.paymentProductGroupId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// mandates
+app.get('/mandates/createMandate', function (req, res) {
+  connectSdk.mandates.create(merchantId, createMandateStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/createWithMandateReference/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.createWithMandateReference(merchantId, req.params.uniqueMandateReference, createWithMandateReferenceStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/getMandate/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.get(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/blockMandate/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.block(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/unblockMandate/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.unblock(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/revokeMandate/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.revoke(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
