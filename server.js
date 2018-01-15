@@ -1,3 +1,8 @@
+/*
+ * This file was auto-generated from the API references found at
+ * https://epayments-api.developer-ingenico.com/s2sapi/v1/
+ */
+
 var express = require('express');
 var app = express();
 var marko = require('marko');
@@ -7,27 +12,28 @@ var connectSdk = require('connect-sdk-nodejs');
 var logger = require('./util/logger');
 
 // stubs
-var createHostedCheckoutStub = require('./stubs/hostedcheckouts/createHostedCheckout.json');
-var createPaymentStub = require('./stubs/payments/createPaymentRequest.json');
-var approvePaymentRequestStub = require('./stubs/payments/approvePaymentRequest.json');
-var capturePaymentRequestStub = require('./stubs/payments/capturePaymentRequest.json');
-var tokenizePaymentStub = require('./stubs/payments/tokenizePaymentRequest.json');
-var completePaymentStub = require('./stubs/payments/completePaymentRequest.json');
-var createRefundStub = require('./stubs/payments/createRefundRequest.json');
-var createPayoutStub = require('./stubs/payouts/createPayoutRequest.json');
-var approvePayoutStub = require('./stubs/payouts/approvePayoutRequest.json');
-var getCustomerDetailsStub = require('./stubs/products/getCustomerDetailsRequest.json');
-var approveRefundStub = require('./stubs/refunds/approveRefundRequest.json');
-var riskAssessmentCardStub = require('./stubs/riskassessments/riskAssessmentCardRequest.json');
-var riskAssessmentBankAccountStub = require('./stubs/riskassessments/riskAssessmentBankAccountRequest.json');
-var retrieveIINdetailsStub = require('./stubs/services/retrieveIINDetailsRequest.json');
-var convertBankAccountStub = require('./stubs/services/convertBankAccountRequest.json');
-var createSessionStub = require('./stubs/sessions/createSessionRequest.json');
-var createTokenStub = require('./stubs/tokens/createTokenRequest.json');
-var updateTokenStub = require('./stubs/tokens/updateTokenRequest.json');
-var approvesepadirectdebitStub = require('./stubs/tokens/approvesepadirectdebitRequest.json');
-var createMandateStub = require('./stubs/mandates/createMandate.json');
-var createWithMandateReferenceStub = require('./stubs/mandates/createWithMandateReference.json');
+var createHostedCheckoutStub = require('./stubs/hostedcheckouts/create.json');
+var createPaymentStub = require('./stubs/payments/create.json');
+var completePaymentStub = require('./stubs/payments/complete.json');
+var tokenizePaymentStub = require('./stubs/payments/tokenize.json');
+var approvePaymentStub = require('./stubs/payments/approve.json');
+var capturePaymentStub = require('./stubs/payments/capture.json');
+var refundPaymentStub = require('./stubs/payments/refund.json');
+var approveRefundStub = require('./stubs/refunds/approve.json');
+var createPayoutStub = require('./stubs/payouts/create.json');
+var approvePayoutStub = require('./stubs/payouts/approve.json');
+var getCustomerDetailsStub = require('./stubs/products/customerDetails.json');
+var getDeviceFingerprintStub = require('./stubs/products/deviceFingerprint.json');
+var riskAssessmentBankAccountStub = require('./stubs/riskassessments/bankaccounts.json');
+var riskAssessmentCardsStub = require('./stubs/riskassessments/cards.json');
+var convertBankAccountStub = require('./stubs/services/bankaccount.json');
+var iinDetailsStub = require('./stubs/services/getIINdetails.json');
+var createTokenStub = require('./stubs/tokens/create.json');
+var updateTokenStub = require('./stubs/tokens/update.json');
+var approveSepaDirectDebitTokenStub = require('./stubs/tokens/approvesepadirectdebit.json');
+var createMandateStub = require('./stubs/mandates/create.json');
+var createMandateWithReferenceStub = require('./stubs/mandates/createWithMandateReference.json');
+var createSessionStub = require('./stubs/sessions/create.json');
 
 var config = require('./config.json');
 
@@ -40,12 +46,12 @@ connectSdk.init({
   apiKeyId: config.apiKeyId,
   secretApiKey: config.secretApiKey
   /*
-  ,integrator: "Ingenico.Integrator"
+  ,integrator: 'Ingenico.Integrator'
   ,shoppingCartExtension: {
-    "creator":"Ingenico.Creator",
-    "name":"Extension",
-    "version":"1.0",
-    "extensionId":"ExtensionId"
+    creator: 'Ingenico.Creator',
+    name: 'Extension',
+    version: '1.0',
+    extensionId: 'ExtensionId'
   }
   */
 });
@@ -80,97 +86,51 @@ var render = function (res, error, response) {
   }
 };
 
-// hardcoded for demo purposes
-var paymentContext = {
-  currencyCode: "EUR",
-  countryCode: "NL",
-  locale: "en_GB",
-  amount: 1000,
-  isRecurring: true
-};
-
 // all SDK methods; grouped by API method
 
-// captures
-app.get('/captures/get/:captureId', function (req, res) {
-  connectSdk.captures.get(merchantId, req.params.captureId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-
-// hosted checkouts
-app.get('/hostedcheckout', function (req, res) {
+// Hosted Checkouts
+app.get('/hostedcheckouts/create', function (req, res) {
   connectSdk.hostedcheckouts.create(merchantId, createHostedCheckoutStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/hostedcheckoutstatus/:hostedCheckoutId', function (req, res) {
+app.get('/hostedcheckouts/get/:hostedCheckoutId', function (req, res) {
   connectSdk.hostedcheckouts.get(merchantId, req.params.hostedCheckoutId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
 
-// payments
-app.get('/payments/findPayments/:merchantReference', function (req, res) {
-  var queryParams = {
-    limit: 10,
-    offset: 0,
-    merchantReference: req.params.merchantReference
-  };
-  connectSdk.payments.find(merchantId, queryParams, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/createPayment', function (req, res) {
+// Payments
+app.get('/payments/create', function (req, res) {
+  var paymentContext = {}
   paymentContext.idemPotence = {
     key: 'idempotence'
   };
+
   connectSdk.payments.create(merchantId, createPaymentStub, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/payments/retrievePayment/:paymentId', function (req, res) {
+app.get('/payments/find', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.payments.find(merchantId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/get/:paymentId', function (req, res) {
   connectSdk.payments.get(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/payments/approvesChallengedPayment/:paymentId', function (req, res) {
-  connectSdk.payments.processchallenged(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/approvePayment/:paymentId', function (req, res) {
-  connectSdk.payments.approve(merchantId, req.params.paymentId, approvePaymentRequestStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/capturePayment/:paymentId', function (req, res) {
-  connectSdk.payments.capture(merchantId, req.params.paymentId, capturePaymentRequestStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/getPaymentCaptures/:paymentId', function (req, res) {
-  connectSdk.payments.captures(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/tokenizePayment/:paymentId', function (req, res) {
-  connectSdk.payments.tokenize(merchantId, req.params.paymentId, tokenizePaymentStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/cancelPayment/:paymentId', function (req, res) {
-  connectSdk.payments.cancel(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/createRefund/:paymentId', function (req, res) {
-  connectSdk.payments.refund(merchantId, req.params.paymentId, createRefundStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payments/cancelApprovalPayment/:paymentId', function (req, res) {
-  connectSdk.payments.cancelapproval(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+app.get('/payments/complete/:paymentId', function (req, res) {
+  connectSdk.payments.complete(merchantId, req.params.paymentId, completePaymentStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
@@ -179,230 +139,349 @@ app.get('/payments/thirdPartyStatus/:paymentId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/payments/completePayment/:paymentId', function (req, res) {
-  connectSdk.payments.complete(merchantId, req.params.paymentId, completePaymentStub, null, function (error, sdkResponse) {
+app.get('/payments/tokenize/:paymentId', function (req, res) {
+  connectSdk.payments.tokenize(merchantId, req.params.paymentId, tokenizePaymentStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-
-// payouts
-app.get('/payouts/findPayouts/:merchantReference', function (req, res) {
-  var queryParams = {
-    limit: 10,
-    offset: 0,
-    merchantReference: req.params.merchantReference
+app.get('/payments/processchallenged/:paymentId', function (req, res) {
+  connectSdk.payments.processchallenged(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/approve/:paymentId', function (req, res) {
+  connectSdk.payments.approve(merchantId, req.params.paymentId, approvePaymentStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/capture/:paymentId', function (req, res) {
+  connectSdk.payments.capture(merchantId, req.params.paymentId, capturePaymentStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/cancelapproval/:paymentId', function (req, res) {
+  connectSdk.payments.cancelapproval(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/captures/:paymentId', function (req, res) {
+  connectSdk.payments.captures(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/refund/:paymentId', function (req, res) {
+  var paymentContext = {}
+  paymentContext.idemPotence = {
+    key: 'idempotence'
   };
-  connectSdk.payouts.find(merchantId, queryParams, function (error, sdkResponse) {
+
+  connectSdk.payments.refund(merchantId, req.params.paymentId, refundPaymentStub, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/payouts/createPayout', function (req, res) {
-  connectSdk.payouts.create(merchantId, createPayoutStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payouts/retrievePayout/:payoutId', function (req, res) {
-  connectSdk.payouts.get(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payouts/approvesPayout/:payoutId', function (req, res) {
-  connectSdk.payouts.approve(merchantId, req.params.payoutId, approvePayoutStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payouts/cancelApprovalPayout/:payoutId', function (req, res) {
-  connectSdk.payouts.cancelapproval(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/payouts/cancelPayout/:payoutId', function (req, res) {
-  connectSdk.payouts.cancel(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
+app.get('/payments/cancel/:paymentId', function (req, res) {
+  connectSdk.payments.cancel(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
 
-// products
-app.get('/products/retrievePaymentProducts', function (req, res) {
-  connectSdk.products.find(merchantId, paymentContext, function (error, sdkResponse) {
+// Captures
+app.get('/captures/get/:captureId', function (req, res) {
+  connectSdk.captures.get(merchantId, req.params.captureId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/products/retrievePaymentProductFields/:paymentProductId', function (req, res) {
-  connectSdk.products.get(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/products/networks/:paymentProductId', function (req, res) {
-  connectSdk.products.networks(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/products/publickey/:paymentProductId', function (req, res) {
-  connectSdk.products.publicKey(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/products/retrievePaymentProductFieldDirectory/:paymentProductId', function (req, res) {
+
+// Refunds
+app.get('/refunds/find', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
   var clientUserAgent = req.headers["user-agent"];
   paymentContext.extraHeaders = [
     { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
   ];
-  connectSdk.products.directory(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+
+  connectSdk.refunds.find(merchantId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/products/getCustomerDetails/:paymentProductId/:fiscalNumber', function (req, res) {
-  var body = getCustomerDetailsStub.values[0].value = req.params.fiscalNumber;
-  connectSdk.products.customerDetails(merchantId, req.params.paymentProductId, getCustomerDetailsStub, null, function (error, sdkResponse) {
+app.get('/refunds/get/:refundId', function (req, res) {
+  connectSdk.refunds.get(merchantId, req.params.refundId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/refunds/approve/:refundId', function (req, res) {
+  connectSdk.refunds.approve(merchantId, req.params.refundId, approveRefundStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/refunds/cancel/:refundId', function (req, res) {
+  connectSdk.refunds.cancel(merchantId, req.params.refundId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/refunds/cancelapproval/:refundId', function (req, res) {
+  connectSdk.refunds.cancelapproval(merchantId, req.params.refundId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
 
-// product groups
-app.get('/products/retrievePaymentProductGroups', function (req, res) {
+// Payouts
+app.get('/payouts/create', function (req, res) {
+  var paymentContext = {}
+  paymentContext.idemPotence = {
+    key: 'idempotence'
+  };
+
+  connectSdk.payouts.create(merchantId, createPayoutStub, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payouts/find', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.payouts.find(merchantId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payouts/get/:payoutId', function (req, res) {
+  connectSdk.payouts.get(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payouts/approve/:payoutId', function (req, res) {
+  connectSdk.payouts.approve(merchantId, req.params.payoutId, approvePayoutStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payouts/cancel/:payoutId', function (req, res) {
+  connectSdk.payouts.cancel(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payouts/cancelapproval/:payoutId', function (req, res) {
+  connectSdk.payouts.cancelapproval(merchantId, req.params.payoutId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Product Groups
+app.get('/productgroups/find', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
   connectSdk.productgroups.find(merchantId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/products/retrievePaymentProductGroup/:paymentProductGroupId', function (req, res) {
+app.get('/productgroups/get/:paymentProductGroupId', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
   connectSdk.productgroups.get(merchantId, req.params.paymentProductGroupId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
 
-// mandates
-app.get('/mandates/createMandate', function (req, res) {
-  connectSdk.mandates.create(merchantId, createMandateStub, null, function (error, sdkResponse) {
+// Products
+app.get('/products/find', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.products.find(merchantId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/mandates/createWithMandateReference/:uniqueMandateReference', function (req, res) {
-  connectSdk.mandates.createWithMandateReference(merchantId, req.params.uniqueMandateReference, createWithMandateReferenceStub, null, function (error, sdkResponse) {
+app.get('/products/get/:paymentProductId', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.products.get(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/mandates/getMandate/:uniqueMandateReference', function (req, res) {
-  connectSdk.mandates.get(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+app.get('/products/directory/:paymentProductId', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.products.directory(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/mandates/blockMandate/:uniqueMandateReference', function (req, res) {
-  connectSdk.mandates.block(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+app.get('/products/customerDetails/:paymentProductId/:fiscalNumber', function (req, res) {
+  getCustomerDetailsStub.values[0].value = req.params.fiscalNumber;
+  connectSdk.products.customerDetails(merchantId, req.params.paymentProductId, getCustomerDetailsStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/mandates/unblockMandate/:uniqueMandateReference', function (req, res) {
-  connectSdk.mandates.unblock(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+app.get('/products/deviceFingerprint/:paymentProductId', function (req, res) {
+  connectSdk.products.deviceFingerprint(merchantId, req.params.paymentProductId, getDeviceFingerprintStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/mandates/revokeMandate/:uniqueMandateReference', function (req, res) {
-  connectSdk.mandates.revoke(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+app.get('/products/networks/:paymentProductId', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.products.networks(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/products/publicKey/:paymentProductId', function (req, res) {
+  connectSdk.products.publicKey(merchantId, req.params.paymentProductId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
 
-// refunds
-app.get('/refunds/findRefunds/:merchantReference', function (req, res) {
-  var queryParams = {
-    limit: 10,
-    offset: 0,
-    merchantReference: req.params.merchantReference
-  };
-  connectSdk.refunds.find(merchantId, queryParams, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/refunds/retrieveRefund/:refundId', function (req, res) {
-  connectSdk.refunds.get(merchantId, req.params.refundId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/refunds/approveRefund/:payoutId', function (req, res) {
-  connectSdk.refunds.approve(merchantId, req.params.refundId, approveRefundStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/refunds/undoApproveRefund/:payoutId', function (req, res) {
-  connectSdk.refunds.cancelapproval(merchantId, req.params.refundId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/refunds/cancelRefund/:payoutId', function (req, res) {
-  connectSdk.refunds.cancel(merchantId, req.params.refundId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-
-// riskassessments
-app.get('/riskassessments/card', function (req, res) {
-  connectSdk.riskassessments.cards(merchantId, riskAssessmentCardStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/riskassessments/bankaccount', function (req, res) {
+// Risk assessments
+app.get('/riskassessments/bankaccounts', function (req, res) {
   connectSdk.riskassessments.bankaccounts(merchantId, riskAssessmentBankAccountStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/riskassessments/cards', function (req, res) {
+  connectSdk.riskassessments.cards(merchantId, riskAssessmentCardsStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
-// services
+// Services
+app.get('/services/convertAmount', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.services.convertAmount(merchantId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/services/bankaccount', function (req, res) {
+  connectSdk.services.bankaccount(merchantId, convertBankAccountStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/services/getIINdetails', function (req, res) {
+  connectSdk.services.getIINdetails(merchantId, iinDetailsStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/services/testconnection', function (req, res) {
   connectSdk.services.testconnection(merchantId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/services/retrieveIINdetails', function (req, res) {
-  connectSdk.services.getIINdetails(merchantId, retrieveIINdetailsStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/services/convertbankaccount', function (req, res) {
-  connectSdk.services.bankaccount(merchantId, convertBankAccountStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-app.get('/services/convertAmount', function (req, res) {
-  connectSdk.services.convertAmount(merchantId, {
-    "source": "USD",
-    "target": "EUR",
-    "amount": 1000
-  }, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
 
-// sessions
-app.get('/sessions/createSession', function (req, res) {
-  connectSdk.sessions.create(merchantId, createSessionStub, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
-
-// tokens
-app.get('/tokens/createToken', function (req, res) {
+// Tokens
+app.get('/tokens/create', function (req, res) {
   connectSdk.tokens.create(merchantId, createTokenStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/tokens/retrieveToken/:tokenId', function (req, res) {
+app.get('/tokens/get/:tokenId', function (req, res) {
   connectSdk.tokens.get(merchantId, req.params.tokenId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/tokens/updateToken/:tokenId', function (req, res) {
+app.get('/tokens/update/:tokenId', function (req, res) {
   connectSdk.tokens.update(merchantId, req.params.tokenId, updateTokenStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/tokens/deleteToken/:tokenId', function (req, res) {
-  connectSdk.tokens.remove(merchantId, req.params.tokenId, { mandateCancelDate: "20160503" }, function (error, sdkResponse) {
+app.get('/tokens/delete/:tokenId', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.tokens.remove(merchantId, req.params.tokenId, paymentContext, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/tokens/approveSepaDirectdebit/:tokenId', function (req, res) {
-  connectSdk.tokens.approvesepadirectdebit(merchantId, req.params.tokenId, approvesepadirectdebitStub, null, function (error, sdkResponse) {
+app.get('/tokens/approvesepadirectdebit/:tokenId', function (req, res) {
+  connectSdk.tokens.approvesepadirectdebit(merchantId, req.params.tokenId, approveSepaDirectDebitTokenStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Mandates
+app.get('/mandates/create', function (req, res) {
+  connectSdk.mandates.create(merchantId, createMandateStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/createWithMandateReference/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.createWithMandateReference(merchantId, req.params.uniqueMandateReference, createMandateWithReferenceStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/get/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.get(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/block/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.block(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/unblock/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.unblock(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/mandates/revoke/:uniqueMandateReference', function (req, res) {
+  connectSdk.mandates.revoke(merchantId, req.params.uniqueMandateReference, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Sessions
+app.get('/sessions/create', function (req, res) {
+  connectSdk.sessions.create(merchantId, createSessionStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });

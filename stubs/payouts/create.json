@@ -1,0 +1,40 @@
+{
+  "bankTransferPayoutMethodSpecificInput" : {
+    "payoutText" : "Payout Acme",
+    "payoutDate" : "20150102",
+    "swiftCode" : "swift",
+    "bankAccountIban" : {
+      "iban" : "IT60X0542811101000000123456",
+      "accountHolderName" : "Wile E. Coyote"
+    },
+    "customer" : {
+      "contactDetails" : {
+        "emailAddress" : "wile.e.coyote@acmelabs.com"
+      },
+      "companyInformation" : {
+        "name" : "Acme Labs"
+      },
+      "address" : {
+        "countryCode" : "US",
+        "street" : "N Hollywood Way",
+        "houseNumber" : "411",
+        "zip" : "91505",
+        "city" : "Burbank",
+        "state" : "California"
+      },
+      "name" : {
+        "title" : "Mr.",
+        "firstName" : "Wile",
+        "surnamePrefix" : "E.",
+        "surname" : "Coyote"
+      }
+    }
+  },
+  "amountOfMoney" : {
+    "currencyCode" : "EUR",
+    "amount" : 2345
+  },
+  "references" : {
+    "merchantReference" : "AcmeOrder001"
+  }
+}

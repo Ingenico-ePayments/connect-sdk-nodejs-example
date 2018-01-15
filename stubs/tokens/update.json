@@ -1,0 +1,35 @@
+{
+  "paymentProductId" : 1,
+  "card" : {
+    "data" : {
+      "cardWithoutCvv" : {
+        "cardholderName" : "Wile E. Coyote",
+        "issueNumber" : "12",
+        "expiryDate" : "0820",
+        "cardNumber" : "4567350000427977"
+      }
+    },
+    "customer" : {
+      "merchantCustomerId" : "1234",
+      "personalInformation" : {
+        "name" : {
+          "surname" : "Coyote",
+          "surnamePrefix" : "E.",
+          "firstName" : "Wile"
+        }
+      },
+      "billingAddress" : {
+        "zip" : "84536",
+        "street" : "Desertroad",
+        "state" : "Utah",
+        "countryCode" : "US",
+        "houseNumber" : "13",
+        "additionalInfo" : "b",
+        "city" : "Monument Valley"
+      },
+      "companyInformation" : {
+        "name" : "Acme Labs"
+      }
+    }
+  }
+}

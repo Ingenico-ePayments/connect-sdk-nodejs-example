@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+   This file was auto-generated from the API references found at
+   https://epayments-api.developer-ingenico.com/s2sapi/v1/
+-->
 
 <head>
   <title>Ingenico Node.js S2S example</title>
@@ -24,31 +28,17 @@
       <div class="col-xs-12 col-md-3">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingCaptures">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCaptures" aria-expanded="true" aria-controls="collapseCaptures">
-                  Captures
-                </a>
-              </h4>
-            </div>
-            <div id="collapseCaptures" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCaptures">
-              <ul class="list-group">
-                <li class="list-group-item"><a data-href="/captures/get" href="#" data-input="captureId">Get capture</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingHostedCheckouts">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHostedCheckouts" aria-expanded="true" aria-controls="collapseHostedCheckouts">
-                  HostedCheckouts
+                  Hosted Checkouts
                 </a>
               </h4>
             </div>
             <div id="collapseHostedCheckouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHostedCheckouts">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/hostedcheckout" href="#">Create hosted checkout</a></li>
-                <li class="list-group-item"><a data-href="/hostedcheckoutstatus" href="#" data-input="hostedCheckoutId">Get hosted checkout status</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createHostedCheckout">Create hosted checkout</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getHostedCheckout">Get hosted checkout status</a></li>
               </ul>
             </div>
           </div>
@@ -62,91 +52,33 @@
             </div>
             <div id="collapsePayments" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingPayments">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/payments/findPayments" href="#" data-input="merchantReference">Find payments</a></li>
-                <li class="list-group-item"><a data-href="/payments/createPayment" href="#">Create payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/retrievePayment" href="#" data-input="paymentId">Retrieve payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/approvesChallengedPayment" href="#" data-input="paymentId">Approves challenged payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/approvePayment" href="#" data-input="paymentId">Approve payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/capturePayment" href="#" data-input="paymentId">Capture payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/getPaymentCaptures" href="#" data-input="paymentId">Get captures of payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/tokenizePayment" href="#" data-input="paymentId">Tokenize payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/cancelPayment" href="#" data-input="paymentId">Cancel payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/createRefund" href="#" data-input="paymentId">Create refund</a></li>
-                <li class="list-group-item"><a data-href="/payments/cancelApprovalPayment" href="#" data-input="paymentId">Cancel approval payment</a></li>
-                <li class="list-group-item"><a data-href="/payments/thirdPartyStatus" href="#" data-input="paymentId">Get third party status</a></li>
-                <li class="list-group-item"><a data-href="/payments/completePayment" href="#" data-input="paymentId">Complete payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createPayment">Create payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="findPayments">Find payments</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPayment">Get payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="completePayment">Complete payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getThirdPartyStatus">Third party status</a></li>
+                <li class="list-group-item"><a href="#" data-operation="tokenizePayment">Create a token from payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="processChallengedPayment">Approves challenged payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="approvePayment">Approve payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="capturePayment">Capture payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelApprovalPayment">Undo capture payment request</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPaymentCaptures">Get captures of payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="refundPayment">Create refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelPayment">Cancel payment</a></li>
               </ul>
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingPayouts">
+            <div class="panel-heading" role="tab" id="headingCaptures">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePayouts" aria-expanded="true" aria-controls="collapsePayouts">
-                  Payouts
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCaptures" aria-expanded="true" aria-controls="collapseCaptures">
+                  Captures
                 </a>
               </h4>
             </div>
-            <div id="collapsePayouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPayouts">
+            <div id="collapseCaptures" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCaptures">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/payouts/findPayouts" href="#" data-input="merchantReference">Find payouts</a></li>
-                <li class="list-group-item"><a data-href="/payouts/createPayout" href="#">Create payout</a></li>
-                <li class="list-group-item"><a data-href="/payouts/retrievePayout" href="#" data-input="payoutId">Retrieve payout</a></li>
-                <li class="list-group-item"><a data-href="/payouts/approvesPayout" href="#" data-input="payoutId">Approve payout</a></li>
-                <li class="list-group-item"><a data-href="/payouts/cancelApprovalPayout" href="#" data-input="payoutId">Undo approve payout</a></li>
-                <li class="list-group-item"><a data-href="/payouts/cancelPayout" href="#" data-input="payoutId">Cancel payout</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingProducts">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProducts" aria-expanded="true" aria-controls="collapseProducts">
-                  Products
-                </a>
-              </h4>
-            </div>
-            <div id="collapseProducts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProducts">
-              <ul class="list-group">
-                <li class="list-group-item"><a data-href="/products/retrievePaymentProducts" href="#">Retrieve payment products</a></li>
-                <li class="list-group-item"><a data-href="/products/retrievePaymentProductFields" data-input="paymentProductId" href="#">Retrieve payment product fields</a></li>
-                <li class="list-group-item"><a data-href="/products/networks" data-input="paymentProductId" href="#">Get supported networks</a></li>
-                <li class="list-group-item"><a data-href="/products/publickey" data-input="paymentProductId" href="#">Get public key</a></li>
-                <li class="list-group-item"><a data-href="/products/retrievePaymentProductFieldDirectory" data-input="paymentProductId" href="#">Retrieve payment product directory</a></li>
-                <li class="list-group-item"><a data-href="/products/getCustomerDetails" data-input="paymentProductId, fiscalNumber" href="#">Get customer details</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingProductGroups">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProductGroups" aria-expanded="true" aria-controls="collapseProductGroups">
-                  Product Groups
-                </a>
-              </h4>
-            </div>
-            <div id="collapseProductGroups" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProductGroups">
-              <ul class="list-group">
-                <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroups" href="#">Retrieve payment product groups</a></li>
-                <li class="list-group-item"><a data-href="/products/retrievePaymentProductGroup" data-input="paymentProductGroupId" href="#">Retrieve payment product group</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingMandates">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMandates" aria-expanded="true" aria-controls="collapseMandates">
-                  Mandates
-                </a>
-              </h4>
-            </div>
-            <div id="collapseMandates" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMandates">
-              <ul class="list-group">
-                <li class="list-group-item"><a data-href="/mandates/createMandate" href="#">Create a mandate</a></li>
-                <li class="list-group-item"><a data-href="/mandates/createOrUpdateMandate" href="#" data-input="uniqueMandateReference">Create or update a mandate</a></li>
-                <li class="list-group-item"><a data-href="/mandates/getMandate" href="#" data-input="uniqueMandateReference">Get a mandate</a></li>
-                <li class="list-group-item"><a data-href="/mandates/blockMandate" href="#" data-input="uniqueMandateReference">Block a mandate</a></li>
-                <li class="list-group-item"><a data-href="/mandates/unblockMandate" href="#" data-input="uniqueMandateReference">Unblock a mandate</a></li>
-                <li class="list-group-item"><a data-href="/mandates/revokeMandate" href="#" data-input="uniqueMandateReference">Revoke a mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getCapture">Get capture</a></li>
               </ul>
             </div>
           </div>
@@ -160,11 +92,65 @@
             </div>
             <div id="collapseRefunds" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRefunds">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/refunds/findRefunds" href="#" data-input="merchantReference">Find refunds</a></li>
-                <li class="list-group-item"><a data-href="/refunds/retrieveRefund" data-input="refundId" href="#">Retrieve refund</a></li>
-                <li class="list-group-item"><a data-href="/refunds/approveRefund" data-input="refundId" href="#">Approve refund</a></li>
-                <li class="list-group-item"><a data-href="/refunds/undoApproveRefund" data-input="refundId" href="#">Undo approve refund</a></li>
-                <li class="list-group-item"><a data-href="/refunds/cancelRefund" data-input="refundId" href="#">Cancel refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="findRefunds">Find refunds</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getRefund">Get refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="approveRefund">Approve refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelRefund">Cancel refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelApprovalRefund">Undo approve refund</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingPayouts">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePayouts" aria-expanded="true" aria-controls="collapsePayouts">
+                  Payouts
+                </a>
+              </h4>
+            </div>
+            <div id="collapsePayouts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPayouts">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="createPayout">Create payout</a></li>
+                <li class="list-group-item"><a href="#" data-operation="findPayouts">Find payouts</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPayout">Get payout</a></li>
+                <li class="list-group-item"><a href="#" data-operation="approvePayout">Approve payout</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelPayout">Cancel payout</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelApprovalPayout">Undo approve payout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingProductGroups">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProductGroups" aria-expanded="true" aria-controls="collapseProductGroups">
+                  Product Groups
+                </a>
+              </h4>
+            </div>
+            <div id="collapseProductGroups" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProductGroups">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="getPaymentProductGroups">Get payment product groups</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPaymentProductGroup">Get payment product group</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingProducts">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProducts" aria-expanded="true" aria-controls="collapseProducts">
+                  Products
+                </a>
+              </h4>
+            </div>
+            <div id="collapseProducts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProducts">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="getPaymentProducts">Get payment products</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPaymentProduct">Get payment product</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getDirectory">Get payment product directory</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getCustomerDetails">Get customer details</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getDeviceFingerprint">Get device fingerprint</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getNetworks">Get payment product networks</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPaymentProductPublicKey">Get payment product specific public key</a></li>
               </ul>
             </div>
           </div>
@@ -172,14 +158,14 @@
             <div class="panel-heading" role="tab" id="headingRiskAssessments">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRiskAssessments" aria-expanded="true" aria-controls="collapseRiskAssessments">
-                  Risk Assessments
+                  Risk assessments
                 </a>
               </h4>
             </div>
             <div id="collapseRiskAssessments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRiskAssessments">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/riskassessments/card" href="#">Risk-assess card</a></li>
-                <li class="list-group-item"><a data-href="/riskassessments/bankaccount" href="#">Risk-assess bank account</a></li>
+                <li class="list-group-item"><a href="#" data-operation="riskAssessmentBankAccount">Risk-assess bankaccount</a></li>
+                <li class="list-group-item"><a href="#" data-operation="riskAssessmentCards">Risk-assess card</a></li>
               </ul>
             </div>
           </div>
@@ -193,24 +179,10 @@
             </div>
             <div id="collapseServices" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingServices">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/services/testconnection" href="#">Test connection</a></li>
-                <li class="list-group-item"><a data-href="/services/retrieveIINdetails" href="#">Retrieve IIN details</a></li>
-                <li class="list-group-item"><a data-href="/services/convertbankaccount" href="#">Convert Bankaccount</a></li>
-                <li class="list-group-item"><a data-href="/services/convertAmount" href="#">Convert amount</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSessions">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSessions" aria-expanded="true" aria-controls="collapseSessions">
-                  Sessions
-                </a>
-              </h4>
-            </div>
-            <div id="collapseSessions" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSessions">
-              <ul class="list-group">
-                <li class="list-group-item"><a data-href="/sessions/createSession" href="#">Create session</a></li>
+                <li class="list-group-item"><a href="#" data-operation="convertAmount">Convert amount</a></li>
+                <li class="list-group-item"><a href="#" data-operation="convertBankAccount">Convert bankaccount</a></li>
+                <li class="list-group-item"><a href="#" data-operation="iinDetails">Get IIN details</a></li>
+                <li class="list-group-item"><a href="#" data-operation="testConnection">Test connection</a></li>
               </ul>
             </div>
           </div>
@@ -224,11 +196,44 @@
             </div>
             <div id="collapseTokens" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTokens">
               <ul class="list-group">
-                <li class="list-group-item"><a data-href="/tokens/createToken" href="#">Create token</a></li>
-                <li class="list-group-item"><a data-href="/tokens/retrieveToken" href="#" data-input="tokenId">Retrieve token</a></li>
-                <li class="list-group-item"><a data-href="/tokens/updateToken" href="#" data-input="tokenId">Update token</a></li>
-                <li class="list-group-item"><a data-href="/tokens/deleteToken" href="#" data-input="tokenId">Delete token</a></li>
-                <li class="list-group-item"><a data-href="/tokens/approveSepaDirectdebit" href="#" data-input="tokenId">Approve SEPA DD mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createToken">Create token</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getToken">Get token</a></li>
+                <li class="list-group-item"><a href="#" data-operation="updateToken">Update token</a></li>
+                <li class="list-group-item"><a href="#" data-operation="deleteToken">Delete token</a></li>
+                <li class="list-group-item"><a href="#" data-operation="approveSepaDirectDebitToken">Approve SEPA DD mandate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingMandates">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMandates" aria-expanded="true" aria-controls="collapseMandates">
+                  Mandates
+                </a>
+              </h4>
+            </div>
+            <div id="collapseMandates" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMandates">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="createMandate">Create mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createMandateWithReference">Create mandate with mandatereference</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getMandate">Get mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="blockMandate">Block mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="unblockMandate">Unblock mandate</a></li>
+                <li class="list-group-item"><a href="#" data-operation="revokeMandate">Revoke mandate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingSessions">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSessions" aria-expanded="true" aria-controls="collapseSessions">
+                  Sessions
+                </a>
+              </h4>
+            </div>
+            <div id="collapseSessions" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSessions">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="createSession">Create session</a></li>
               </ul>
             </div>
           </div>
@@ -264,62 +269,356 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script>
     $(function () {
-      var clicked = '';
+      var clicked = {};
 
-      var inputValues = {};
+      // initial values for query parameters
+      var inputValues = {
+        currencyCode: 'EUR',
+        countryCode: 'NL',
+        locale: 'en_GB',
+        amount: 1000,
+        isRecurring: true,
+        source: 'USD',
+        target: 'EUR',
+        mandateCancelDate: '20160503',
+        offset: 0,
+        limit: 10
+      };
 
-      var doSend = function (url, params) {
-      var start = new Date().getTime();
+      var operations = {};
+      operations.createHostedCheckout = {
+        href: '/hostedcheckouts/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.getHostedCheckout = {
+        href: '/hostedcheckouts/get',
+        uriParameters: [ 'hostedCheckoutId' ],
+        queryParameters: [  ],
+      };
+      operations.createPayment = {
+        href: '/payments/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.findPayments = {
+        href: '/payments/find',
+        uriParameters: [  ],
+        queryParameters: [ 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+      };
+      operations.getPayment = {
+        href: '/payments/get',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.completePayment = {
+        href: '/payments/complete',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.getThirdPartyStatus = {
+        href: '/payments/thirdPartyStatus',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.tokenizePayment = {
+        href: '/payments/tokenize',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.processChallengedPayment = {
+        href: '/payments/processchallenged',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.approvePayment = {
+        href: '/payments/approve',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.capturePayment = {
+        href: '/payments/capture',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelApprovalPayment = {
+        href: '/payments/cancelapproval',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.getPaymentCaptures = {
+        href: '/payments/captures',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.refundPayment = {
+        href: '/payments/refund',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelPayment = {
+        href: '/payments/cancel',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.getCapture = {
+        href: '/captures/get',
+        uriParameters: [ 'captureId' ],
+        queryParameters: [  ],
+      };
+      operations.findRefunds = {
+        href: '/refunds/find',
+        uriParameters: [  ],
+        queryParameters: [ 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+      };
+      operations.getRefund = {
+        href: '/refunds/get',
+        uriParameters: [ 'refundId' ],
+        queryParameters: [  ],
+      };
+      operations.approveRefund = {
+        href: '/refunds/approve',
+        uriParameters: [ 'refundId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelRefund = {
+        href: '/refunds/cancel',
+        uriParameters: [ 'refundId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelApprovalRefund = {
+        href: '/refunds/cancelapproval',
+        uriParameters: [ 'refundId' ],
+        queryParameters: [  ],
+      };
+      operations.createPayout = {
+        href: '/payouts/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.findPayouts = {
+        href: '/payouts/find',
+        uriParameters: [  ],
+        queryParameters: [ 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+      };
+      operations.getPayout = {
+        href: '/payouts/get',
+        uriParameters: [ 'payoutId' ],
+        queryParameters: [  ],
+      };
+      operations.approvePayout = {
+        href: '/payouts/approve',
+        uriParameters: [ 'payoutId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelPayout = {
+        href: '/payouts/cancel',
+        uriParameters: [ 'payoutId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelApprovalPayout = {
+        href: '/payouts/cancelapproval',
+        uriParameters: [ 'payoutId' ],
+        queryParameters: [  ],
+      };
+      operations.getPaymentProductGroups = {
+        href: '/productgroups/find',
+        uriParameters: [  ],
+        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+      };
+      operations.getPaymentProductGroup = {
+        href: '/productgroups/get',
+        uriParameters: [ 'paymentProductGroupId' ],
+        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+      };
+      operations.getPaymentProducts = {
+        href: '/products/find',
+        uriParameters: [  ],
+        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+      };
+      operations.getPaymentProduct = {
+        href: '/products/get',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide', 'forceBasicFlow' ],
+      };
+      operations.getDirectory = {
+        href: '/products/directory',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [ 'countryCode', 'currencyCode' ],
+      };
+      operations.getCustomerDetails = {
+        href: '/products/customerDetails',
+        uriParameters: [ 'paymentProductId', 'fiscalNumber' ],
+        queryParameters: [  ],
+      };
+      operations.getDeviceFingerprint = {
+        href: '/products/deviceFingerprint',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [  ],
+      };
+      operations.getNetworks = {
+        href: '/products/networks',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [ 'countryCode', 'currencyCode', 'amount', 'isRecurring' ],
+      };
+      operations.getPaymentProductPublicKey = {
+        href: '/products/publicKey',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [  ],
+      };
+      operations.riskAssessmentBankAccount = {
+        href: '/riskassessments/bankaccounts',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.riskAssessmentCards = {
+        href: '/riskassessments/cards',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.convertAmount = {
+        href: '/services/convertAmount',
+        uriParameters: [  ],
+        queryParameters: [ 'source', 'target', 'amount' ],
+      };
+      operations.convertBankAccount = {
+        href: '/services/bankaccount',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.iinDetails = {
+        href: '/services/getIINdetails',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.testConnection = {
+        href: '/services/testconnection',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.createToken = {
+        href: '/tokens/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.getToken = {
+        href: '/tokens/get',
+        uriParameters: [ 'tokenId' ],
+        queryParameters: [  ],
+      };
+      operations.updateToken = {
+        href: '/tokens/update',
+        uriParameters: [ 'tokenId' ],
+        queryParameters: [  ],
+      };
+      operations.deleteToken = {
+        href: '/tokens/delete',
+        uriParameters: [ 'tokenId' ],
+        queryParameters: [ 'mandateCancelDate' ],
+      };
+      operations.approveSepaDirectDebitToken = {
+        href: '/tokens/approvesepadirectdebit',
+        uriParameters: [ 'tokenId' ],
+        queryParameters: [  ],
+      };
+      operations.createMandate = {
+        href: '/mandates/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.createMandateWithReference = {
+        href: '/mandates/createWithMandateReference',
+        uriParameters: [ 'uniqueMandateReference' ],
+        queryParameters: [  ],
+      };
+      operations.getMandate = {
+        href: '/mandates/get',
+        uriParameters: [ 'uniqueMandateReference' ],
+        queryParameters: [  ],
+      };
+      operations.blockMandate = {
+        href: '/mandates/block',
+        uriParameters: [ 'uniqueMandateReference' ],
+        queryParameters: [  ],
+      };
+      operations.unblockMandate = {
+        href: '/mandates/unblock',
+        uriParameters: [ 'uniqueMandateReference' ],
+        queryParameters: [  ],
+      };
+      operations.revokeMandate = {
+        href: '/mandates/revoke',
+        uriParameters: [ 'uniqueMandateReference' ],
+        queryParameters: [  ],
+      };
+      operations.createSession = {
+        href: '/sessions/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+
+      var doSend = function (operation, params) {
+        var url = operation.href;
+        var start = new Date().getTime();
         if (params) {
-          $.each(params, function (index, param) {
-            url = url + "/" + param;
+          $.each(operation.uriParameters, function (index, param) {
+            var value = typeof params[param] === 'undefined' ? '' : params[param];
+            url = url + '/' + value;
+          });
+          $.each(operation.queryParameters, function (index, param) {
+            var value = typeof params[param] === 'undefined' ? '' : params[param];
+            if (value !== '') {
+              var separator = url.indexOf('?') == -1 ? '?' : '&';
+              url = url + separator + param + '=' + encodeURI(value);
+            }
           });
         }
-        $(".output-wrapper").show();
-        $("#output").text('Loading ...');
-        $("#roundTrip").text('-');
-        $("#outputStatusCode").text('Loading ...');
+        $('.output-wrapper').show();
+        $('#output').text('Loading ...');
+        $('#roundTrip').text('-');
+        $('#outputStatusCode').text('Loading ...');
         $.getJSON(url, function (json) {
-          $("#output").text(JSON.stringify(json, null, '  '));
+          $('#output').text(JSON.stringify(json, null, '  '));
         }).fail(function (error) {
-          $("#output").text(JSON.stringify(error.responseJSON, null, '  '));
+          $('#output').text(JSON.stringify(error.responseJSON, null, '  '));
         }).always(function(jqxhr, textStatus, _jqxhr) {
-          if (textStatus === "success" || textStatus === "nocontent") {
+          if (textStatus === 'success' || textStatus === 'nocontent') {
             // the always callback has parameters based on the statusText
             // jqXHR.always(function( data|jqXHR, textStatus, jqXHR|errorThrown ) { });
             // so if the status is 'success' I copy the jqxhr.
             jqxhr = _jqxhr;
           }
-          $("#outputStatusCode").text(jqxhr.status + " " + jqxhr.statusText);
-          $("#roundTrip").text(new Date().getTime() - start);
+          $('#outputStatusCode').text(jqxhr.status + ' ' + jqxhr.statusText);
+          $('#roundTrip').text(new Date().getTime() - start);
         });
       };
 
-      $("a[data-href]").click(function (e) {
+      $('a[data-operation]').click(function (e) {
         e.preventDefault();
-        if ($(this).data("input")) {
+        var operation = operations[$(this).data('operation')];
+        var properties = operation.uriParameters.concat(operation.queryParameters);
+        if (properties.length > 0) {
           // fill popup
-          var properties = $(this).data("input").split(",");
-          clicked = $(this).data("href");
+          clicked = operation;
 
           // store existing input values
-          $("#inputs input").each(function (index, input) {
-            inputValues[$(input).data("key")] = $(input).val();
+          $('#inputs input').each(function (index, input) {
+            inputValues[$(input).data('key')] = $(input).val();
           });
           // re-create input modal content
-          var $inputs = $("#inputs").empty();
+          var $inputs = $('#inputs').empty();
           $.each(properties, function (index, property) {
-            var id = "i" + (index + 1);
+            var id = 'i' + (index + 1);
             var prop = property.trim();
-            var $label = $("<label>").attr("for", id).addClass("col-sm-3 control-label").text(prop);
-            var $input = $("<input>").attr({ "type": "text", "id": id, "placeholder": prop }).addClass("form-control").data("key", prop).val(inputValues[prop]);
-            var $formGroup = $("<div>").addClass("form-group").append($label).append($("<div>").addClass("col-sm-9").append($input));
+            var $label = $('<label>').attr('for', id).addClass('col-sm-3 control-label').text(prop);
+            var $input = $('<input>').attr({ 'type': 'text', 'id': id, 'placeholder': prop }).addClass('form-control').data('key', prop).val(inputValues[prop]);
+            var $formGroup = $('<div>').addClass('form-group').append($label).append($('<div>').addClass('col-sm-9').append($input));
             $inputs.append($formGroup);
           });
 
-          $("#themodal").modal({backdrop: 'static'});
+          $('#themodal').modal({backdrop: 'static'});
         } else {
-          doSend($(this).data("href"));
+          doSend(operation);
         }
       });
 
@@ -327,23 +626,22 @@
         $('#inputs #i1').focus();
       });
 
-      $('#inputs').on("keyup", "input", function (e) {
+      $('#inputs').on('keydown', 'input', function (e) {
         if (e.which == 13) {
           e.preventDefault();
-          $("#sendOverlay").click();
+          $('#sendOverlay').click();
         }
       });
 
-      $("#sendOverlay").on('click', function (e) {
-        var params = [];
+      $('#sendOverlay').on('click', function (e) {
+        var params = {};
         $('#inputs input').each(function (index, input) {
-            params.push($(input).val());
+          params[$(input).attr('placeholder')] = $(input).val();
         });
         doSend(clicked, params);
-        $("#themodal").modal('hide');
+        $('#themodal').modal('hide');
       });
     });
   </script>
 </body>
-
 </html>
