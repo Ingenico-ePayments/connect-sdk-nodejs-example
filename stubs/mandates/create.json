@@ -18,8 +18,7 @@
       "iban" : "DE46940594210000012345"
     },
     "contactDetails" : {
-      "emailAddress" : "wile.e.coyote@acmelabs.com",
-      "phoneNumber" : "+1234567890"
+      "emailAddress" : "wile.e.coyote@acmelabs.com"
     },
     "companyName" : "Acme labs"
   },
