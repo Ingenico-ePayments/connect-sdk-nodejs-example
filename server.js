@@ -13,6 +13,7 @@ var logger = require('./util/logger');
 
 // stubs
 var createHostedCheckoutStub = require('./stubs/hostedcheckouts/create.json');
+var createHostedMandateManagementStub = require('./stubs/hostedmandatemanagements/create.json');
 var createPaymentStub = require('./stubs/payments/create.json');
 var completePaymentStub = require('./stubs/payments/complete.json');
 var tokenizePaymentStub = require('./stubs/payments/tokenize.json');
@@ -96,6 +97,18 @@ app.get('/hostedcheckouts/create', function (req, res) {
 });
 app.get('/hostedcheckouts/get/:hostedCheckoutId', function (req, res) {
   connectSdk.hostedcheckouts.get(merchantId, req.params.hostedCheckoutId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Hosted Mandate Management
+app.get('/hostedmandatemanagements/create', function (req, res) {
+  connectSdk.hostedmandatemanagements.create(merchantId, createHostedMandateManagementStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/hostedmandatemanagements/get/:hostedMandateManagementId', function (req, res) {
+  connectSdk.hostedmandatemanagements.get(merchantId, req.params.hostedMandateManagementId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });

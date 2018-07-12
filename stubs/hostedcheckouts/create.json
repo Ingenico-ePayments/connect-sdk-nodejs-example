@@ -5,6 +5,7 @@
       "amount" : 2345
     },
     "customer" : {
+      "merchantCustomerId": "1234",
       "billingAddress" : {
         "countryCode" : "US"
       }

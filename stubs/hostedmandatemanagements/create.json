@@ -1,0 +1,12 @@
+{
+  "hostedMandateManagementSpecificInput" : {
+    "locale" : "fr_FR",
+    "variant" : "101",
+    "returnUrl" : "http://www.example.com"
+  },
+  "createMandateInfo" : {
+    "customerReference" : "idonthaveareference",
+    "recurrenceType" : "RECURRING",
+    "signatureType" : "UNSIGNED"
+  }
+}

@@ -43,6 +43,21 @@
             </div>
           </div>
           <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingHostedMandateManagement">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHostedMandateManagement" aria-expanded="true" aria-controls="collapseHostedMandateManagement">
+                  Hosted Mandate Management
+                </a>
+              </h4>
+            </div>
+            <div id="collapseHostedMandateManagement" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHostedMandateManagement">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="createHostedMandateManagement">Create hosted mandate management</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getHostedMandateManagement">Get hosted mandate management</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingPayments">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePayments" aria-expanded="true" aria-controls="collapsePayments">
@@ -294,6 +309,16 @@
       operations.getHostedCheckout = {
         href: '/hostedcheckouts/get',
         uriParameters: [ 'hostedCheckoutId' ],
+        queryParameters: [  ],
+      };
+      operations.createHostedMandateManagement = {
+        href: '/hostedmandatemanagements/create',
+        uriParameters: [  ],
+        queryParameters: [  ],
+      };
+      operations.getHostedMandateManagement = {
+        href: '/hostedmandatemanagements/get',
+        uriParameters: [ 'hostedMandateManagementId' ],
         queryParameters: [  ],
       };
       operations.createPayment = {
