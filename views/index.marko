@@ -79,6 +79,7 @@
                 <li class="list-group-item"><a href="#" data-operation="cancelApprovalPayment">Undo capture payment request</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getPaymentCaptures">Get captures of payment</a></li>
                 <li class="list-group-item"><a href="#" data-operation="refundPayment">Create refund</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getRefunds">Get refunds of payment</a></li>
                 <li class="list-group-item"><a href="#" data-operation="cancelPayment">Cancel payment</a></li>
               </ul>
             </div>
@@ -378,6 +379,11 @@
       };
       operations.refundPayment = {
         href: '/payments/refund',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.getRefunds = {
+        href: '/payments/refunds',
         uriParameters: [ 'paymentId' ],
         queryParameters: [  ],
       };

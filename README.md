@@ -1,8 +1,8 @@
-# Ingenico Connect JavaScript Server2Server example
+# Ingenico Connect Node.js example
 
 ## Introduction
 
-The JavaScript SDK example helps you to communicate with the [Ingenico Connect](http://www.ingenico.com/epayments) Server API. It's primary features are:
+The Node.js SDK example helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. It's primary features are:
 
 * an overview of all API calls
 * examples of POST payloads

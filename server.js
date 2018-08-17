@@ -192,6 +192,11 @@ app.get('/payments/refund/:paymentId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/payments/refunds/:paymentId', function (req, res) {
+  connectSdk.payments.refunds(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/payments/cancel/:paymentId', function (req, res) {
   connectSdk.payments.cancel(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
