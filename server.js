@@ -23,6 +23,7 @@ var refundPaymentStub = require('./stubs/payments/refund.json');
 var approveRefundStub = require('./stubs/refunds/approve.json');
 var createPayoutStub = require('./stubs/payouts/create.json');
 var approvePayoutStub = require('./stubs/payouts/approve.json');
+var getDeviceFingerprintForGroupsStub = require('./stubs/productgroups/deviceFingerprint.json');
 var getCustomerDetailsStub = require('./stubs/products/customerDetails.json');
 var getDeviceFingerprintStub = require('./stubs/products/deviceFingerprint.json');
 var riskAssessmentBankAccountStub = require('./stubs/riskassessments/bankaccounts.json');
@@ -314,6 +315,11 @@ app.get('/productgroups/get/:paymentProductGroupId', function (req, res) {
   ];
 
   connectSdk.productgroups.get(merchantId, req.params.paymentProductGroupId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/productgroups/deviceFingerprint/:paymentProductGroupId', function (req, res) {
+  connectSdk.productgroups.deviceFingerprint(merchantId, req.params.paymentProductGroupId, getDeviceFingerprintForGroupsStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });

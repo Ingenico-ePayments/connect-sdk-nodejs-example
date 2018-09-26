@@ -147,6 +147,7 @@
               <ul class="list-group">
                 <li class="list-group-item"><a href="#" data-operation="getPaymentProductGroups">Get payment product groups</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getPaymentProductGroup">Get payment product group</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getDeviceFingerprintForGroups">Get device fingerprint</a></li>
               </ul>
             </div>
           </div>
@@ -461,6 +462,11 @@
         href: '/productgroups/get',
         uriParameters: [ 'paymentProductGroupId' ],
         queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+      };
+      operations.getDeviceFingerprintForGroups = {
+        href: '/productgroups/deviceFingerprint',
+        uriParameters: [ 'paymentProductGroupId' ],
+        queryParameters: [  ],
       };
       operations.getPaymentProducts = {
         href: '/products/find',
