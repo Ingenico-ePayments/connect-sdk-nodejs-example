@@ -8,7 +8,8 @@
       "merchantCustomerId" : "1234",
       "billingAddress" : {
         "countryCode" : "US"
-      }
+      },
+      "merchantCustomerId": "12314"
     }
   },
   "hostedCheckoutSpecificInput" : {
