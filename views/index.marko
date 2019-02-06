@@ -81,6 +81,8 @@
                 <li class="list-group-item"><a href="#" data-operation="refundPayment">Create refund</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getRefunds">Get refunds of payment</a></li>
                 <li class="list-group-item"><a href="#" data-operation="cancelPayment">Cancel payment</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createPaymentDispute">Create dispute</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPaymentDisputes">Get disputes</a></li>
               </ul>
             </div>
           </div>
@@ -113,6 +115,21 @@
                 <li class="list-group-item"><a href="#" data-operation="approveRefund">Approve refund</a></li>
                 <li class="list-group-item"><a href="#" data-operation="cancelRefund">Cancel refund</a></li>
                 <li class="list-group-item"><a href="#" data-operation="cancelApprovalRefund">Undo approve refund</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingDisputes">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseDisputes" aria-expanded="true" aria-controls="collapseDisputes">
+                  Disputes
+                </a>
+              </h4>
+            </div>
+            <div id="collapseDisputes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDisputes">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="getDispute">Get Dispute</a></li>
+                <li class="list-group-item"><a href="#" data-operation="submitDispute">Submit Dispute</a></li>
               </ul>
             </div>
           </div>
@@ -393,6 +410,16 @@
         uriParameters: [ 'paymentId' ],
         queryParameters: [  ],
       };
+      operations.createPaymentDispute = {
+        href: '/payments/dispute',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
+      operations.getPaymentDisputes = {
+        href: '/payments/disputes',
+        uriParameters: [ 'paymentId' ],
+        queryParameters: [  ],
+      };
       operations.getCapture = {
         href: '/captures/get',
         uriParameters: [ 'captureId' ],
@@ -421,6 +448,16 @@
       operations.cancelApprovalRefund = {
         href: '/refunds/cancelapproval',
         uriParameters: [ 'refundId' ],
+        queryParameters: [  ],
+      };
+      operations.getDispute = {
+        href: '/disputes/get',
+        uriParameters: [ 'disputeId' ],
+        queryParameters: [  ],
+      };
+      operations.submitDispute = {
+        href: '/disputes/submit',
+        uriParameters: [ 'disputeId' ],
         queryParameters: [  ],
       };
       operations.createPayout = {

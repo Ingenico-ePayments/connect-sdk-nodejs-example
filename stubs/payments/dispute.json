@@ -1,0 +1,10 @@
+{
+  "amountOfMoney" : {
+    "amount" : 1234,
+    "currencyCode" : "USD"
+  },
+  "contactPerson" : "Wile Coyote",
+  "emailAddress" : "wile.e.coyote@acmelabs.com",
+  "replyTo" : "r.runner@acmelabs.com",
+  "requestMessage" : "This is the message from the merchant to GlobalCollect. It is a a freeform text field."
+}

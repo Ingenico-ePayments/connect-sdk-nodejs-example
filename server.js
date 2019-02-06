@@ -20,6 +20,7 @@ var tokenizePaymentStub = require('./stubs/payments/tokenize.json');
 var approvePaymentStub = require('./stubs/payments/approve.json');
 var capturePaymentStub = require('./stubs/payments/capture.json');
 var refundPaymentStub = require('./stubs/payments/refund.json');
+var createPaymentDisputeStub = require('./stubs/payments/dispute.json');
 var approveRefundStub = require('./stubs/refunds/approve.json');
 var createPayoutStub = require('./stubs/payouts/create.json');
 var approvePayoutStub = require('./stubs/payouts/approve.json');
@@ -203,6 +204,16 @@ app.get('/payments/cancel/:paymentId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/payments/dispute/:paymentId', function (req, res) {
+  connectSdk.payments.dispute(merchantId, req.params.paymentId, createPaymentDisputeStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/payments/disputes/:paymentId', function (req, res) {
+  connectSdk.payments.disputes(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
 // Captures
 app.get('/captures/get/:captureId', function (req, res) {
@@ -242,6 +253,18 @@ app.get('/refunds/cancel/:refundId', function (req, res) {
 });
 app.get('/refunds/cancelapproval/:refundId', function (req, res) {
   connectSdk.refunds.cancelapproval(merchantId, req.params.refundId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Disputes
+app.get('/disputes/get/:disputeId', function (req, res) {
+  connectSdk.disputes.get(merchantId, req.params.disputeId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/disputes/submit/:disputeId', function (req, res) {
+  connectSdk.disputes.submit(merchantId, req.params.disputeId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
