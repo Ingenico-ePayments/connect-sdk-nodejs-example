@@ -130,6 +130,7 @@
               <ul class="list-group">
                 <li class="list-group-item"><a href="#" data-operation="getDispute">Get Dispute</a></li>
                 <li class="list-group-item"><a href="#" data-operation="submitDispute">Submit Dispute</a></li>
+                <li class="list-group-item"><a href="#" data-operation="cancelDispute">Cancel Dispute</a></li>
               </ul>
             </div>
           </div>
@@ -457,6 +458,11 @@
       };
       operations.submitDispute = {
         href: '/disputes/submit',
+        uriParameters: [ 'disputeId' ],
+        queryParameters: [  ],
+      };
+      operations.cancelDispute = {
+        href: '/disputes/cancel',
         uriParameters: [ 'disputeId' ],
         queryParameters: [  ],
       };

@@ -268,6 +268,11 @@ app.get('/disputes/submit/:disputeId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/disputes/cancel/:disputeId', function (req, res) {
+  connectSdk.disputes.cancel(merchantId, req.params.disputeId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
 // Payouts
 app.get('/payouts/create', function (req, res) {
