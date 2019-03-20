@@ -458,6 +458,19 @@ app.get('/services/getIINdetails', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/services/privacypolicy', function (req, res) {
+  // pass query parameters on as-is
+  var paymentContext = req.query;
+  // add some extra headers
+  var clientUserAgent = req.headers["user-agent"];
+  paymentContext.extraHeaders = [
+    { key: 'X-GCS-ClientMetaInfo', value: clientUserAgent }
+  ];
+
+  connectSdk.services.privacypolicy(merchantId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 app.get('/services/testconnection', function (req, res) {
   connectSdk.services.testconnection(merchantId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);

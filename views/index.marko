@@ -217,6 +217,7 @@
                 <li class="list-group-item"><a href="#" data-operation="convertAmount">Convert amount</a></li>
                 <li class="list-group-item"><a href="#" data-operation="convertBankAccount">Convert bankaccount</a></li>
                 <li class="list-group-item"><a href="#" data-operation="iinDetails">Get IIN details</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getPrivacyPolicy">Get Privacy Policy</a></li>
                 <li class="list-group-item"><a href="#" data-operation="testConnection">Test connection</a></li>
               </ul>
             </div>
@@ -570,6 +571,11 @@
         href: '/services/getIINdetails',
         uriParameters: [  ],
         queryParameters: [  ],
+      };
+      operations.getPrivacyPolicy = {
+        href: '/services/privacypolicy',
+        uriParameters: [  ],
+        queryParameters: [ 'locale', 'paymentProductId' ],
       };
       operations.testConnection = {
         href: '/services/testconnection',
