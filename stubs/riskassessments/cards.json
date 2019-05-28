@@ -13,7 +13,8 @@
       "locale" : "en_US",
       "billingAddress" : {
         "countryCode" : "US"
-      }
+      },
+      "accountType" : "existing"
     },
     "additionalInput" : {
       "airlineData" : {
@@ -30,7 +31,6 @@
         "placeOfIssue" : "Utah",
         "flightDate" : "20150102",
         "isThirdParty" : true,
-        "isRegisteredCustomer" : true,
         "posCityCode" : "AMS",
         "merchantCustomerId" : "14",
         "issueDate" : "20150101",

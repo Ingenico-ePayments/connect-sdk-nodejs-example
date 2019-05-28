@@ -17,7 +17,8 @@
         "dateOfBirth" : "19490917"
       },
       "companyInformation" : {
-        "name" : "Acme Labs"
+        "name" : "Acme Labs",
+        "vatNumber" : "1234AB5678CD"
       },
       "locale" : "en_US",
       "billingAddress" : {
@@ -29,7 +30,15 @@
         "state" : "Utah",
         "countryCode" : "US"
       },
-      "shippingAddress" : {
+      "contactDetails" : {
+        "emailAddress" : "wile.e.coyote@acmelabs.com",
+        "phoneNumber" : "+1234567890",
+        "faxNumber" : "+1234567891",
+        "emailMessageType" : "html"
+      }
+    },
+    "shipping" : {
+      "address" : {
         "name" : {
           "title" : "Miss",
           "firstName" : "Road",
@@ -42,14 +51,7 @@
         "city" : "Monument Valley",
         "state" : "Utah",
         "countryCode" : "US"
-      },
-      "contactDetails" : {
-        "emailAddress" : "wile.e.coyote@acmelabs.com",
-        "phoneNumber" : "+1234567890",
-        "faxNumber" : "+1234567891",
-        "emailMessageType" : "html"
-      },
-      "vatNumber" : "1234AB5678CD"
+      }
     },
     "references" : {
       "merchantOrderId" : 123456,
@@ -89,7 +91,39 @@
   },
   "cardPaymentMethodSpecificInput" : {
     "paymentProductId" : 1,
-    "skipAuthentication" : false,
+    "threeDSecure" : {
+      "priorThreeDSecureData" : {
+        "utcTimestamp" : "201901311530",
+        "acsTransactionId" : "empty",
+        "method" : "challenged"
+      },
+      "challengeIndicator" : "challenge-requested",
+      "externalCardholderAuthenticationData" : {
+        "cavv" : "AgAAAAAABk4DWZ4C28yUQAAAAAA=",
+        "cavvAlgorithm" : "1",
+        "eci" : 8,
+        "xid" : "n3h2uOQPUgnmqhCkXNfxl8pOZJA=",
+        "validationResult" : "Y",
+        "threeDServerTransactionId" : "3DSTID1234",
+        "threeDSecureVersion" : "v2"
+      },
+      "challengeCanvasSize" : "600x400",
+      "sdkData" : {
+        "sdkAppId" : "xyz",
+        "deviceInfo" : "abc123",
+        "deviceRenderOptions" : {
+          "sdkInterface" : "native",
+          "sdkUiType" : "multi-select"
+        },
+        "sdkEncryptedData" : "abc123",
+        "sdkEphemeralPublicKey" : "123xyz",
+        "sdkMaxTimeout" : "30",
+        "sdkReferenceNumber" : "zaq123",
+        "sdkTransactionId" : "xsw321"
+      },
+      "authenticationFlow" : "browser",
+      "skipAuthentication" : false
+    },
     "card" : {
       "cvv" : "123",
       "cardNumber" : "4567350000427977",
