@@ -1,13 +1,13 @@
 {
   "name": "connect-sdk-nodejs-example",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "description": "An example application for connect-sdk-nodejs",
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.4",
     "log4js": "^0.6.33",
     "marko": "^3.0.5",
-    "connect-sdk-nodejs": "^2.29.0"
+    "connect-sdk-nodejs": "^2.30.0"
   },
   "devDependencies": {},
   "repository": {

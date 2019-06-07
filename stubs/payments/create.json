@@ -108,19 +108,6 @@
         "threeDSecureVersion" : "v2"
       },
       "challengeCanvasSize" : "600x400",
-      "sdkData" : {
-        "sdkAppId" : "xyz",
-        "deviceInfo" : "abc123",
-        "deviceRenderOptions" : {
-          "sdkInterface" : "native",
-          "sdkUiType" : "multi-select"
-        },
-        "sdkEncryptedData" : "abc123",
-        "sdkEphemeralPublicKey" : "123xyz",
-        "sdkMaxTimeout" : "30",
-        "sdkReferenceNumber" : "zaq123",
-        "sdkTransactionId" : "xsw321"
-      },
       "authenticationFlow" : "browser",
       "skipAuthentication" : false
     },
