@@ -5,6 +5,8 @@
 
 var express = require('express');
 var app = express();
+var busboy = require('connect-busboy');
+var rawBody = require('raw-body');
 var marko = require('marko');
 require('marko/node-require').install();
 var connectSdk = require('connect-sdk-nodejs');
@@ -47,9 +49,9 @@ connectSdk.init({
   enableLogging: config.enableLogging, // defaults to false
   logger: logger, // if undefined console.log will be used
   apiKeyId: config.apiKeyId,
-  secretApiKey: config.secretApiKey
+  secretApiKey: config.secretApiKey,
+  integrator: 'Ingenico'
   /*
-  ,integrator: 'Ingenico.Integrator'
   ,shoppingCartExtension: {
     creator: 'Ingenico.Creator',
     name: 'Extension',
@@ -62,6 +64,14 @@ connectSdk.init({
 // DEMO app
 var port = config.port;
 var merchantId = config.merchantId;
+
+app.use(busboy({
+  immediate: true,
+  highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
+  limits: {
+    fileSize: 5 * 1024 * 1024
+  }
+}));
 
 app.engine('marko', function (filePath, options, callback) {
   marko.load(filePath).render(options, function (err, output) {
@@ -80,7 +90,20 @@ var render = function (res, error, response) {
     var status = (typeof error.status !== 'undefined') ? error.status : 500;
     var body = (typeof error.body !== 'undefined') ? error.body : error;
     res.status(status).json(body).end();
+  } else if (response.file) {
+    // a binary file
+    res.status(response.status).set('Content-Type', response.file.contentType || 'application/octet-stream');
+    if (response.file.contentLength) {
+      res.set('Content-Length', response.file.contentLength);
+    }
+    if (response.file.filename) {
+      res.attachment(response.file.filename);
+    } else {
+      res.attachment();
+    }
+    response.body.pipe(res);
   } else {
+    // JSON
     res.status(response.status).json(response.body).end();
   }
   if (connectSdk.context.getIdempotenceRequestTimestamp()) {
@@ -273,6 +296,27 @@ app.get('/disputes/cancel/:disputeId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.post('/disputes/uploadFile/:disputeId', function (req, res) {
+  var body = {};
+  req.busboy.on('file', function (name, file, fileName, encoding, mimetype) {
+    // ideally we would use content: file, but busboy will not continue until the entire content is read
+    rawBody(file, function (err, content) {
+      body[name] = {
+        fileName: fileName,
+        content: content,
+        contentType: mimetype
+      };
+    });
+  });
+  req.busboy.on('field', function (name, value, nameTruncated, valueTruncated) {
+    body[name] = value;
+  });
+  req.busboy.on('finish', function () {
+    connectSdk.disputes.uploadFile(merchantId, req.params.disputeId, body, null, function (error, sdkResponse) {
+      render(res, error, sdkResponse);
+    });
+  });
+});
 
 // Payouts
 app.get('/payouts/create', function (req, res) {
@@ -416,11 +460,6 @@ app.get('/products/networks/:paymentProductId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
-app.get('/products/publicKey/:paymentProductId', function (req, res) {
-  connectSdk.products.publicKey(merchantId, req.params.paymentProductId, null, function (error, sdkResponse) {
-    render(res, error, sdkResponse);
-  });
-});
 
 // Risk assessments
 app.get('/riskassessments/bankaccounts', function (req, res) {
@@ -547,6 +586,13 @@ app.get('/mandates/revoke/:uniqueMandateReference', function (req, res) {
 // Sessions
 app.get('/sessions/create', function (req, res) {
   connectSdk.sessions.create(merchantId, createSessionStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Files
+app.get('/files/getFile/:fileId', function (req, res) {
+  connectSdk.files.getFile(merchantId, req.params.fileId, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
