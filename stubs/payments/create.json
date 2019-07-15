@@ -1,10 +1,63 @@
 {
+  "cardPaymentMethodSpecificInput" : {
+    "card" : {
+      "cvv" : "123",
+      "cardNumber" : "4567350000427977",
+      "expiryDate" : "1220",
+      "cardholderName" : "Wile E. Coyote"
+    },
+    "isRecurring" : false,
+    "paymentProductId" : 1,
+    "transactionChannel" : "ECOMMERCE",
+    "threeDSecure" : {
+      "challengeIndicator" : "challenge-requested",
+      "challengeCanvasSize" : "600x400",
+      "authenticationFlow" : "browser",
+      "skipAuthentication" : false,
+      "redirectionData" : {
+        "returnUrl" : "https://hostname.myownwebsite.url"
+      }
+    }
+  },
   "order" : {
     "amountOfMoney" : {
       "currencyCode" : "EUR",
       "amount" : 2980
     },
     "customer" : {
+      "accountType" : "none",
+      "billingAddress" : {
+        "street" : "Desertroad",
+        "houseNumber" : "13",
+        "additionalInfo" : "b",
+        "zip" : "84536",
+        "city" : "Monument Valley",
+        "state" : "Utah",
+        "countryCode" : "US"
+      },
+      "companyInformation" : {
+        "name" : "Acme Labs",
+        "vatNumber" : "1234AB5678CD"
+      },
+      "contactDetails" : {
+        "emailAddress" : "wile.e.coyote@acmelabs.com",
+        "phoneNumber" : "+1234567890",
+        "faxNumber" : "+1234567891"
+      },
+      "device" : {
+        "acceptHeader" : "texthtml,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "browserData" : {
+          "colorDepth" : 24,
+          "javaEnabled" : false,
+          "screenHeight" : "1200",
+          "screenWidth" : "1920"
+        },
+        "ipAddress" : "123.123.123.123",
+        "locale" : "en-US",
+        "userAgent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Safari/605.1.15",
+        "timezoneOffsetUtcMinutes" : "420"
+      },
+      "locale" : "en_US",
       "merchantCustomerId" : "1234",
       "personalInformation" : {
         "name" : {
@@ -15,26 +68,6 @@
         },
         "gender" : "male",
         "dateOfBirth" : "19490917"
-      },
-      "companyInformation" : {
-        "name" : "Acme Labs",
-        "vatNumber" : "1234AB5678CD"
-      },
-      "locale" : "en_US",
-      "billingAddress" : {
-        "street" : "Desertroad",
-        "houseNumber" : "13",
-        "additionalInfo" : "b",
-        "zip" : "84536",
-        "city" : "Monument Valley",
-        "state" : "Utah",
-        "countryCode" : "US"
-      },
-      "contactDetails" : {
-        "emailAddress" : "wile.e.coyote@acmelabs.com",
-        "phoneNumber" : "+1234567890",
-        "faxNumber" : "+1234567891",
-        "emailMessageType" : "html"
       }
     },
     "shipping" : {
@@ -87,35 +120,6 @@
           }
         }
       ]
-    }
-  },
-  "cardPaymentMethodSpecificInput" : {
-    "paymentProductId" : 1,
-    "threeDSecure" : {
-      "priorThreeDSecureData" : {
-        "utcTimestamp" : "201901311530",
-        "acsTransactionId" : "empty",
-        "method" : "challenged"
-      },
-      "challengeIndicator" : "challenge-requested",
-      "externalCardholderAuthenticationData" : {
-        "cavv" : "AgAAAAAABk4DWZ4C28yUQAAAAAA=",
-        "cavvAlgorithm" : "1",
-        "eci" : 8,
-        "xid" : "n3h2uOQPUgnmqhCkXNfxl8pOZJA=",
-        "validationResult" : "Y",
-        "threeDServerTransactionId" : "3DSTID1234",
-        "threeDSecureVersion" : "v2"
-      },
-      "challengeCanvasSize" : "600x400",
-      "authenticationFlow" : "browser",
-      "skipAuthentication" : false
-    },
-    "card" : {
-      "cvv" : "123",
-      "cardNumber" : "4567350000427977",
-      "expiryDate" : "1220",
-      "cardholderName" : "Wile E. Coyote"
     }
   }
 }
