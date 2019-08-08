@@ -9,9 +9,11 @@
     "isRecurring" : false,
     "paymentProductId" : 1,
     "transactionChannel" : "ECOMMERCE",
+    "merchantInitiatedReasonIndicator" : "delayedCharges",
     "threeDSecure" : {
       "challengeIndicator" : "challenge-requested",
       "challengeCanvasSize" : "600x400",
+      "exemptionRequest" : "none",
       "authenticationFlow" : "browser",
       "skipAuthentication" : false,
       "redirectionData" : {
