@@ -16,6 +16,10 @@
       "exemptionRequest" : "none",
       "authenticationFlow" : "browser",
       "skipAuthentication" : false,
+      "authenticationAmount" : {
+        "currencyCode" : "EUR",
+        "amount" : 2980
+      },
       "redirectionData" : {
         "returnUrl" : "https://hostname.myownwebsite.url"
       }
