@@ -29,6 +29,7 @@ var approvePayoutStub = require('./stubs/payouts/approve.json');
 var getDeviceFingerprintForGroupsStub = require('./stubs/productgroups/deviceFingerprint.json');
 var getCustomerDetailsStub = require('./stubs/products/customerDetails.json');
 var getDeviceFingerprintStub = require('./stubs/products/deviceFingerprint.json');
+var createPaymentProductSessionStub = require('./stubs/products/sessions.json');
 var riskAssessmentBankAccountStub = require('./stubs/riskassessments/bankaccounts.json');
 var riskAssessmentCardsStub = require('./stubs/riskassessments/cards.json');
 var convertBankAccountStub = require('./stubs/services/bankaccount.json');
@@ -457,6 +458,11 @@ app.get('/products/networks/:paymentProductId', function (req, res) {
   ];
 
   connectSdk.products.networks(merchantId, req.params.paymentProductId, paymentContext, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+app.get('/products/sessions/:paymentProductId', function (req, res) {
+  connectSdk.products.sessions(merchantId, req.params.paymentProductId, createPaymentProductSessionStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });

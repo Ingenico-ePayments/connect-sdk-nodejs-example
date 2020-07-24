@@ -186,6 +186,7 @@
                 <li class="list-group-item"><a href="#" data-operation="getCustomerDetails">Get customer details</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getDeviceFingerprint">Get device fingerprint</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getNetworks">Get payment product networks</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createPaymentProductSession">Create payment product session</a></li>
               </ul>
             </div>
           </div>
@@ -604,6 +605,12 @@
         href: '/products/networks',
         uriParameters: [ 'paymentProductId' ],
         queryParameters: [ 'countryCode', 'currencyCode', 'amount', 'isRecurring' ],
+        formParameters: {  }
+      };
+      operations.createPaymentProductSession = {
+        href: '/products/sessions',
+        uriParameters: [ 'paymentProductId' ],
+        queryParameters: [  ],
         formParameters: {  }
       };
       operations.riskAssessmentBankAccount = {
