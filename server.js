@@ -238,6 +238,11 @@ app.get('/payments/disputes/:paymentId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/payments/devicefingerprint/:paymentId', function (req, res) {
+  connectSdk.payments.devicefingerprint(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
 // Captures
 app.get('/captures/get/:captureId', function (req, res) {
