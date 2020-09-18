@@ -2,6 +2,6 @@
   "paymentProductSession302SpecificInput" : {
     "domainName" : "pay1.secured-by-ingenico.com",
     "displayName" : "Ingenico",
-    "validationUrl" : "https://apple-pay-gateway-cert.apple.com/paymentservices/startSession"
+    "validationUrl" : "<VALIDATION URL RECEIVED FROM APPLE>"
   }
 }
