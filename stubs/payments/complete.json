@@ -2,7 +2,7 @@
   "cardPaymentMethodSpecificInput" : {
     "card" : {
       "cardNumber" : "67030000000000003",
-      "expiryDate" : "1220",
+      "expiryDate" : "1299",
       "cardholderName" : "Wile E. Coyote"
     }
   }

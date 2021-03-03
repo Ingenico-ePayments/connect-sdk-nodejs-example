@@ -1,6 +1,6 @@
 {
   "name": "connect-sdk-nodejs-example",
-  "version": "1.19.1",
+  "version": "1.19.2",
   "description": "An example application for connect-sdk-nodejs",
   "main": "server.js",
   "dependencies": {
