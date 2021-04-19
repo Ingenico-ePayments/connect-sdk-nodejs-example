@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Node.js SDK example helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. It's primary features are:
+The Node.js SDK example helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. Its primary features are:
 
 * an overview of all API calls
 * examples of POST payloads
-* example of how to intergrate the SDK in a node.js environment
+* example of how to intergrate the SDK in a Node.js environment
 * example on how to implement your own logger
 
 See the [Ingenico ePayments Developer Hub](https://epayments.developer-ingenico.com/documentation/sdk/server/nodejs/) for more information on how to use the SDK.
