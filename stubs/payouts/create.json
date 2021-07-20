@@ -6,7 +6,9 @@
     "bankAccountIban" : {
       "iban" : "IT60X0542811101000000123456",
       "accountHolderName" : "Wile E. Coyote"
-    },
+    }
+  },
+  "payoutDetails" : {
     "customer" : {
       "contactDetails" : {
         "emailAddress" : "wile.e.coyote@acmelabs.com"
@@ -28,13 +30,13 @@
         "surnamePrefix" : "E.",
         "surname" : "Coyote"
       }
+    },
+    "amountOfMoney" : {
+      "currencyCode" : "EUR",
+      "amount" : 2345
+    },
+    "references" : {
+      "merchantReference" : "AcmeOrder001"
     }
-  },
-  "amountOfMoney" : {
-    "currencyCode" : "EUR",
-    "amount" : 2345
-  },
-  "references" : {
-    "merchantReference" : "AcmeOrder001"
   }
 }
