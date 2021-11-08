@@ -126,6 +126,11 @@ app.get('/hostedcheckouts/get/:hostedCheckoutId', function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get('/hostedcheckouts/delete/:hostedCheckoutId', function (req, res) {
+  connectSdk.hostedcheckouts.remove(merchantId, req.params.hostedCheckoutId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
 // Hosted Mandate Management
 app.get('/hostedmandatemanagements/create', function (req, res) {

@@ -39,6 +39,7 @@
               <ul class="list-group">
                 <li class="list-group-item"><a href="#" data-operation="createHostedCheckout">Create hosted checkout</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getHostedCheckout">Get hosted checkout status</a></li>
+                <li class="list-group-item"><a href="#" data-operation="deleteHostedCheckout">Delete hosted checkout</a></li>
               </ul>
             </div>
           </div>
@@ -346,6 +347,12 @@
       };
       operations.getHostedCheckout = {
         href: '/hostedcheckouts/get',
+        uriParameters: [ 'hostedCheckoutId' ],
+        queryParameters: [  ],
+        formParameters: {  }
+      };
+      operations.deleteHostedCheckout = {
+        href: '/hostedcheckouts/delete',
         uriParameters: [ 'hostedCheckoutId' ],
         queryParameters: [  ],
         formParameters: {  }
