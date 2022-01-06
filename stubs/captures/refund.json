@@ -1,0 +1,9 @@
+{
+  "refundReferences" : {
+    "merchantReference" : "AcmeOrder0001"
+  },
+  "amountOfMoney" : {
+    "currencyCode" : "EUR",
+    "amount" : 500
+  }
+}

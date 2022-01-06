@@ -99,6 +99,7 @@
             <div id="collapseCaptures" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCaptures">
               <ul class="list-group">
                 <li class="list-group-item"><a href="#" data-operation="getCapture">Get capture</a></li>
+                <li class="list-group-item"><a href="#" data-operation="createRefundCapture">Create Refund</a></li>
               </ul>
             </div>
           </div>
@@ -326,424 +327,430 @@
 
       // initial values for query parameters
       var inputValues = {
-        currencyCode: 'EUR',
-        countryCode: 'NL',
-        locale: 'en_GB',
+        currencyCode: "EUR",
+        countryCode: "NL",
+        locale: "en_GB",
         amount: 1000,
         isRecurring: true,
-        source: 'USD',
-        target: 'EUR',
-        mandateCancelDate: '20160503',
+        source: "USD",
+        target: "EUR",
+        mandateCancelDate: "20160503",
         offset: 0,
         limit: 10
       };
 
       var operations = {};
       operations.createHostedCheckout = {
-        href: '/hostedcheckouts/create',
+        href: "/hostedcheckouts/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getHostedCheckout = {
-        href: '/hostedcheckouts/get',
-        uriParameters: [ 'hostedCheckoutId' ],
+        href: "/hostedcheckouts/get",
+        uriParameters: [ "hostedCheckoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.deleteHostedCheckout = {
-        href: '/hostedcheckouts/delete',
-        uriParameters: [ 'hostedCheckoutId' ],
+        href: "/hostedcheckouts/delete",
+        uriParameters: [ "hostedCheckoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createHostedMandateManagement = {
-        href: '/hostedmandatemanagements/create',
+        href: "/hostedmandatemanagements/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getHostedMandateManagement = {
-        href: '/hostedmandatemanagements/get',
-        uriParameters: [ 'hostedMandateManagementId' ],
+        href: "/hostedmandatemanagements/get",
+        uriParameters: [ "hostedMandateManagementId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createPayment = {
-        href: '/payments/create',
+        href: "/payments/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.findPayments = {
-        href: '/payments/find',
+        href: "/payments/find",
         uriParameters: [  ],
-        queryParameters: [ 'hostedCheckoutId', 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+        queryParameters: [ "hostedCheckoutId", "merchantReference", "merchantOrderId", "offset", "limit" ],
         formParameters: {  }
       };
       operations.getPayment = {
-        href: '/payments/get',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/get",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.completePayment = {
-        href: '/payments/complete',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/complete",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getThirdPartyStatus = {
-        href: '/payments/thirdPartyStatus',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/thirdPartyStatus",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.tokenizePayment = {
-        href: '/payments/tokenize',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/tokenize",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.processChallengedPayment = {
-        href: '/payments/processchallenged',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/processchallenged",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.approvePayment = {
-        href: '/payments/approve',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/approve",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.capturePayment = {
-        href: '/payments/capture',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/capture",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelApprovalPayment = {
-        href: '/payments/cancelapproval',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/cancelapproval",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPaymentCaptures = {
-        href: '/payments/captures',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/captures",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.refundPayment = {
-        href: '/payments/refund',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/refund",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getRefunds = {
-        href: '/payments/refunds',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/refunds",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelPayment = {
-        href: '/payments/cancel',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/cancel",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createPaymentDispute = {
-        href: '/payments/dispute',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/dispute",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPaymentDisputes = {
-        href: '/payments/disputes',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/disputes",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPaymentDeviceFingerprintDetails = {
-        href: '/payments/devicefingerprint',
-        uriParameters: [ 'paymentId' ],
+        href: "/payments/devicefingerprint",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getCapture = {
-        href: '/captures/get',
-        uriParameters: [ 'captureId' ],
+        href: "/captures/get",
+        uriParameters: [ "captureId" ],
+        queryParameters: [  ],
+        formParameters: {  }
+      };
+      operations.createRefundCapture = {
+        href: "/captures/refund",
+        uriParameters: [ "captureId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.findRefunds = {
-        href: '/refunds/find',
+        href: "/refunds/find",
         uriParameters: [  ],
-        queryParameters: [ 'hostedCheckoutId', 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+        queryParameters: [ "hostedCheckoutId", "merchantReference", "merchantOrderId", "offset", "limit" ],
         formParameters: {  }
       };
       operations.getRefund = {
-        href: '/refunds/get',
-        uriParameters: [ 'refundId' ],
+        href: "/refunds/get",
+        uriParameters: [ "refundId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.approveRefund = {
-        href: '/refunds/approve',
-        uriParameters: [ 'refundId' ],
+        href: "/refunds/approve",
+        uriParameters: [ "refundId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelRefund = {
-        href: '/refunds/cancel',
-        uriParameters: [ 'refundId' ],
+        href: "/refunds/cancel",
+        uriParameters: [ "refundId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelApprovalRefund = {
-        href: '/refunds/cancelapproval',
-        uriParameters: [ 'refundId' ],
+        href: "/refunds/cancelapproval",
+        uriParameters: [ "refundId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getDispute = {
-        href: '/disputes/get',
-        uriParameters: [ 'disputeId' ],
+        href: "/disputes/get",
+        uriParameters: [ "disputeId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.submitDispute = {
-        href: '/disputes/submit',
-        uriParameters: [ 'disputeId' ],
+        href: "/disputes/submit",
+        uriParameters: [ "disputeId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelDispute = {
-        href: '/disputes/cancel',
-        uriParameters: [ 'disputeId' ],
+        href: "/disputes/cancel",
+        uriParameters: [ "disputeId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.uploadDisputeFile = {
-        href: '/disputes/uploadFile',
-        uriParameters: [ 'disputeId' ],
+        href: "/disputes/uploadFile",
+        uriParameters: [ "disputeId" ],
         queryParameters: [  ],
-        formParameters: { 'file': 'file' }
+        formParameters: { "file": "file" }
       };
       operations.createPayout = {
-        href: '/payouts/create',
+        href: "/payouts/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.findPayouts = {
-        href: '/payouts/find',
+        href: "/payouts/find",
         uriParameters: [  ],
-        queryParameters: [ 'merchantReference', 'merchantOrderId', 'offset', 'limit' ],
+        queryParameters: [ "merchantReference", "merchantOrderId", "offset", "limit" ],
         formParameters: {  }
       };
       operations.getPayout = {
-        href: '/payouts/get',
-        uriParameters: [ 'payoutId' ],
+        href: "/payouts/get",
+        uriParameters: [ "payoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.approvePayout = {
-        href: '/payouts/approve',
-        uriParameters: [ 'payoutId' ],
+        href: "/payouts/approve",
+        uriParameters: [ "payoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelPayout = {
-        href: '/payouts/cancel',
-        uriParameters: [ 'payoutId' ],
+        href: "/payouts/cancel",
+        uriParameters: [ "payoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.cancelApprovalPayout = {
-        href: '/payouts/cancelapproval',
-        uriParameters: [ 'payoutId' ],
+        href: "/payouts/cancelapproval",
+        uriParameters: [ "payoutId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPaymentProductGroups = {
-        href: '/productgroups/find',
+        href: "/productgroups/find",
         uriParameters: [  ],
-        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+        queryParameters: [ "countryCode", "currencyCode", "locale", "amount", "isRecurring", "hide" ],
         formParameters: {  }
       };
       operations.getPaymentProductGroup = {
-        href: '/productgroups/get',
-        uriParameters: [ 'paymentProductGroupId' ],
-        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+        href: "/productgroups/get",
+        uriParameters: [ "paymentProductGroupId" ],
+        queryParameters: [ "countryCode", "currencyCode", "locale", "amount", "isRecurring", "hide" ],
         formParameters: {  }
       };
       operations.getDeviceFingerprintForGroups = {
-        href: '/productgroups/deviceFingerprint',
-        uriParameters: [ 'paymentProductGroupId' ],
+        href: "/productgroups/deviceFingerprint",
+        uriParameters: [ "paymentProductGroupId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPaymentProducts = {
-        href: '/products/find',
+        href: "/products/find",
         uriParameters: [  ],
-        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide' ],
+        queryParameters: [ "countryCode", "currencyCode", "locale", "amount", "isRecurring", "hide" ],
         formParameters: {  }
       };
       operations.getPaymentProduct = {
-        href: '/products/get',
-        uriParameters: [ 'paymentProductId' ],
-        queryParameters: [ 'countryCode', 'currencyCode', 'locale', 'amount', 'isRecurring', 'hide', 'forceBasicFlow' ],
+        href: "/products/get",
+        uriParameters: [ "paymentProductId" ],
+        queryParameters: [ "countryCode", "currencyCode", "locale", "amount", "isRecurring", "hide", "forceBasicFlow" ],
         formParameters: {  }
       };
       operations.getDirectory = {
-        href: '/products/directory',
-        uriParameters: [ 'paymentProductId' ],
-        queryParameters: [ 'countryCode', 'currencyCode' ],
+        href: "/products/directory",
+        uriParameters: [ "paymentProductId" ],
+        queryParameters: [ "countryCode", "currencyCode" ],
         formParameters: {  }
       };
       operations.getCustomerDetails = {
-        href: '/products/customerDetails',
-        uriParameters: [ 'paymentProductId', 'fiscalNumber' ],
+        href: "/products/customerDetails",
+        uriParameters: [ "paymentProductId", "fiscalNumber" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getDeviceFingerprint = {
-        href: '/products/deviceFingerprint',
-        uriParameters: [ 'paymentProductId' ],
+        href: "/products/deviceFingerprint",
+        uriParameters: [ "paymentProductId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getNetworks = {
-        href: '/products/networks',
-        uriParameters: [ 'paymentProductId' ],
-        queryParameters: [ 'countryCode', 'currencyCode', 'amount', 'isRecurring' ],
+        href: "/products/networks",
+        uriParameters: [ "paymentProductId" ],
+        queryParameters: [ "countryCode", "currencyCode", "amount", "isRecurring" ],
         formParameters: {  }
       };
       operations.createPaymentProductSession = {
-        href: '/products/sessions',
-        uriParameters: [ 'paymentProductId' ],
+        href: "/products/sessions",
+        uriParameters: [ "paymentProductId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.riskAssessmentBankAccount = {
-        href: '/riskassessments/bankaccounts',
+        href: "/riskassessments/bankaccounts",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.riskAssessmentCards = {
-        href: '/riskassessments/cards',
+        href: "/riskassessments/cards",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.convertAmount = {
-        href: '/services/convertAmount',
+        href: "/services/convertAmount",
         uriParameters: [  ],
-        queryParameters: [ 'source', 'target', 'amount' ],
+        queryParameters: [ "source", "target", "amount" ],
         formParameters: {  }
       };
       operations.convertBankAccount = {
-        href: '/services/bankaccount',
+        href: "/services/bankaccount",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.iinDetails = {
-        href: '/services/getIINdetails',
+        href: "/services/getIINdetails",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getPrivacyPolicy = {
-        href: '/services/privacypolicy',
+        href: "/services/privacypolicy",
         uriParameters: [  ],
-        queryParameters: [ 'locale', 'paymentProductId' ],
+        queryParameters: [ "locale", "paymentProductId" ],
         formParameters: {  }
       };
       operations.testConnection = {
-        href: '/services/testconnection',
+        href: "/services/testconnection",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createToken = {
-        href: '/tokens/create',
+        href: "/tokens/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getToken = {
-        href: '/tokens/get',
-        uriParameters: [ 'tokenId' ],
+        href: "/tokens/get",
+        uriParameters: [ "tokenId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.updateToken = {
-        href: '/tokens/update',
-        uriParameters: [ 'tokenId' ],
+        href: "/tokens/update",
+        uriParameters: [ "tokenId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.deleteToken = {
-        href: '/tokens/delete',
-        uriParameters: [ 'tokenId' ],
-        queryParameters: [ 'mandateCancelDate' ],
+        href: "/tokens/delete",
+        uriParameters: [ "tokenId" ],
+        queryParameters: [ "mandateCancelDate" ],
         formParameters: {  }
       };
       operations.approveSepaDirectDebitToken = {
-        href: '/tokens/approvesepadirectdebit',
-        uriParameters: [ 'tokenId' ],
+        href: "/tokens/approvesepadirectdebit",
+        uriParameters: [ "tokenId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createMandate = {
-        href: '/mandates/create',
+        href: "/mandates/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createMandateWithReference = {
-        href: '/mandates/createWithMandateReference',
-        uriParameters: [ 'uniqueMandateReference' ],
+        href: "/mandates/createWithMandateReference",
+        uriParameters: [ "uniqueMandateReference" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getMandate = {
-        href: '/mandates/get',
-        uriParameters: [ 'uniqueMandateReference' ],
+        href: "/mandates/get",
+        uriParameters: [ "uniqueMandateReference" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.blockMandate = {
-        href: '/mandates/block',
-        uriParameters: [ 'uniqueMandateReference' ],
+        href: "/mandates/block",
+        uriParameters: [ "uniqueMandateReference" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.unblockMandate = {
-        href: '/mandates/unblock',
-        uriParameters: [ 'uniqueMandateReference' ],
+        href: "/mandates/unblock",
+        uriParameters: [ "uniqueMandateReference" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.revokeMandate = {
-        href: '/mandates/revoke',
-        uriParameters: [ 'uniqueMandateReference' ],
+        href: "/mandates/revoke",
+        uriParameters: [ "uniqueMandateReference" ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.createSession = {
-        href: '/sessions/create',
+        href: "/sessions/create",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }
       };
       operations.getFile = {
-        href: '/files/getFile',
-        uriParameters: [ 'fileId' ],
+        href: "/files/getFile",
+        uriParameters: [ "fileId" ],
         queryParameters: [  ],
         formParameters: {  }
       };
@@ -752,12 +759,12 @@
 
       var isBinaryContent = function (contentType) {
         return contentType
-          && !(contentType.length >= 5 && contentType.substring(0, 5) === 'text/')
-          && contentType.indexOf('json') === -1
-          && contentType.indexOf('xml') === -1;
+          && !(contentType.length >= 5 && contentType.substring(0, 5) === "text/")
+          && contentType.indexOf("json") === -1
+          && contentType.indexOf("xml") === -1;
       };
       var isJSON = function (contentType) {
-        return !contentType || contentType.indexOf('json') !== -1;
+        return !contentType || contentType.indexOf("json") !== -1;
       };
       var getFileName = function (disposition) {
         if (disposition) {
@@ -767,7 +774,7 @@
             return trimQuotes(match[1]);
           }
         }
-        return 'unknown';
+        return "unknown";
       };
       var trimQuotes = function (fileName) {
         if (fileName.length < 2) {
@@ -780,46 +787,46 @@
       };
 
       var renderBinaryContent = function (data, xhr) {
-        var contentType = xhr.getResponseHeader('Content-Type');
-        var contentLength = xhr.getResponseHeader('Content-Length');
-        var contentDisposition = xhr.getResponseHeader('Content-Disposition');
+        var contentType = xhr.getResponseHeader("Content-Type");
+        var contentLength = xhr.getResponseHeader("Content-Length");
+        var contentDisposition = xhr.getResponseHeader("Content-Disposition");
         var fileName = getFileName(contentDisposition);
 
-        $('#output').text('Content-Type: ' + (contentType || '-') + '\nContent-Length: ' + (contentLength || '-') + '\nContent-Disposition: ' + (contentDisposition || '-'));
+        $("#output").text("Content-Type: " + (contentType || "-") + "\nContent-Length: " + (contentLength || "-") + "\nContent-Disposition: " + (contentDisposition || "-"));
 
-        var download = $('<a>').text('Save File');
+        var download = $("<a>").text("Save File");
         if (window.navigator.msSaveOrOpenBlob) {
-          download.attr('href', '#');
+          download.attr("href", "#");
           download.click(function () {
             window.navigator.msSaveOrOpenBlob(data, fileName);
           });
         } else {
           currentFileURL = URL.createObjectURL(data);
-          download.attr({'href': currentFileURL, 'download': fileName});
+          download.attr({"href": currentFileURL, "download": fileName});
         }
-        $('#output').append($('<p>')).append(download);
+        $("#output").append($("<p>")).append(download);
       };
       var renderJSON = function (data) {
         if (data) {
           var reader = new FileReader();
           reader.onloadend = function () {
             var json = JSON.parse(reader.result);
-            $('#output').text(JSON.stringify(json, null, '  '));
+            $("#output").text(JSON.stringify(json, null, "  "));
           };
           reader.readAsText(data);
         } else {
-          $('#output').text(' ');
+          $("#output").text(" ");
         }
       };
       var renderOther = function (data) {
         if (data) {
           var reader = new FileReader();
           reader.onloadend = function () {
-            $('#output').text(reader.result);
+            $("#output").text(reader.result);
           };
           reader.readAsText(data);
         } else {
-          $('#output').text(' ');
+          $("#output").text(" ");
         }
       };
 
@@ -829,20 +836,20 @@
         var xhr = new XMLHttpRequest();
 
         var url = operation.href;
-        var method = 'GET';
+        var method = "GET";
         var requestData = null;
         var start = new Date().getTime();
 
         if (params) {
           $.each(operation.uriParameters, function (index, param) {
-            var value = typeof params[param] === 'undefined' ? '' : params[param];
-            url = url + '/' + value;
+            var value = typeof params[param] === "undefined" ? "" : params[param];
+            url = url + "/" + value;
           });
           $.each(operation.queryParameters, function (index, param) {
-            var value = typeof params[param] === 'undefined' ? '' : params[param];
-            if (value !== '') {
-              var separator = url.indexOf('?') == -1 ? '?' : '&';
-              url = url + separator + param + '=' + encodeURI(value);
+            var value = typeof params[param] === "undefined" ? "" : params[param];
+            if (value !== "") {
+              var separator = url.indexOf("?") == -1 ? "?" : "&";
+              url = url + separator + param + "=" + encodeURI(value);
             }
           });
         }
@@ -850,32 +857,32 @@
         if (Object.keys(operation.formParameters).length > 0) {
           requestData = new FormData();
           $.each(operation.formParameters, function (name, type) {
-            if (type === 'file') {
-               var file = !files || typeof files[name] === 'undefined' ? null : files[name];
+            if (type === "file") {
+               var file = !files || typeof files[name] === "undefined" ? null : files[name];
                if (file !== null) {
                  requestData.append(name, file);
                }
             } else {
-              var value = !params || typeof params[param] === 'undefined' ? '' : params[name];
+              var value = !params || typeof params[param] === "undefined" ? "" : params[name];
               requestData.append(name, value);
             }
           });
-          method = 'POST';
+          method = "POST";
         }
         xhr.open(method, url);
-        xhr.responseType = 'blob';
+        xhr.responseType = "blob";
 
-        $('.output-wrapper').show();
+        $(".output-wrapper").show();
         if (currentFileURL) {
           URL.revokeObjectURL(currentFileURL);
           currentFileURL = null;
         }
-        $('#output').text('Loading ...');
-        $('#roundTrip').text('-');
-        $('#outputStatusCode').text('Loading ...');
+        $("#output").text("Loading ...");
+        $("#roundTrip").text("-");
+        $("#outputStatusCode").text("Loading ...");
 
         xhr.onload = function () {
-          var contentType = xhr.getResponseHeader('Content-Type');
+          var contentType = xhr.getResponseHeader("Content-Type");
           var responseData = xhr.response;
           if (isBinaryContent(contentType)) {
             renderBinaryContent(responseData, xhr);
@@ -884,15 +891,15 @@
           } else {
             renderOther(responseData);
           }
-          $('#outputStatusCode').text(xhr.status + ' ' + xhr.statusText);
-          $('#roundTrip').text(new Date().getTime() - start);
+          $("#outputStatusCode").text(xhr.status + " " + xhr.statusText);
+          $("#roundTrip").text(new Date().getTime() - start);
         };
         xhr.send(requestData);
       };
 
-      $('a[data-operation]').click(function (e) {
+      $("a[data-operation]").click(function (e) {
         e.preventDefault();
-        var operation = operations[$(this).data('operation')];
+        var operation = operations[$(this).data("operation")];
         var properties = operation.uriParameters.concat(operation.queryParameters);
         properties = properties.concat(Object.keys(operation.formParameters));
         if (properties.length > 0) {
@@ -900,56 +907,56 @@
           clicked = operation;
 
           // store existing input values
-          $('#inputs input').each(function (index, input) {
-            if (input.type !== 'file') {
-              inputValues[$(input).data('key')] = $(input).val();
+          $("#inputs input").each(function (index, input) {
+            if (input.type !== "file") {
+              inputValues[$(input).data("key")] = $(input).val();
             }
           });
           // re-create input modal content
-          var $inputs = $('#inputs').empty();
+          var $inputs = $("#inputs").empty();
           $.each(properties, function (index, property) {
-            var id = 'i' + (index + 1);
+            var id = "i" + (index + 1);
             var prop = property.trim();
-            var $label = $('<label>').attr('for', id).addClass('col-sm-3 control-label').text(prop);
-            var $input = $('<input>').attr({ 'id': id, 'placeholder': prop }).addClass('form-control').data('key', prop);
-            if (operation.formParameters[prop] === 'file') {
-              $input.attr('type', 'file');
+            var $label = $("<label>").attr("for", id).addClass("col-sm-3 control-label").text(prop);
+            var $input = $("<input>").attr({ "id": id, "placeholder": prop }).addClass("form-control").data("key", prop);
+            if (operation.formParameters[prop] === "file") {
+              $input.attr("type", "file");
             } else {
-              $input.attr('type', 'text').val(inputValues[prop]);
+              $input.attr("type", "text").val(inputValues[prop]);
             }
-            var $formGroup = $('<div>').addClass('form-group').append($label).append($('<div>').addClass('col-sm-9').append($input));
+            var $formGroup = $("<div>").addClass("form-group").append($label).append($("<div>").addClass("col-sm-9").append($input));
             $inputs.append($formGroup);
           });
 
-          $('#themodal').modal({backdrop: 'static'});
+          $("#themodal").modal({backdrop: "static"});
         } else {
           doSend(operation);
         }
       });
 
-      $('#themodal').on('shown.bs.modal', function () {
-        $('#inputs #i1').focus();
+      $("#themodal").on("shown.bs.modal", function () {
+        $("#inputs #i1").focus();
       });
 
-      $('#inputs').on('keydown', 'input', function (e) {
+      $("#inputs").on("keydown", "input", function (e) {
         if (e.which == 13) {
           e.preventDefault();
-          $('#sendOverlay').click();
+          $("#sendOverlay").click();
         }
       });
 
-      $('#sendOverlay').on('click', function (e) {
+      $("#sendOverlay").on("click", function (e) {
         var params = {};
         var files = {};
-        $('#inputs input').each(function (index, input) {
-          if (input.type == 'file') {
-            files[$(input).attr('placeholder')] = input.files[0];
+        $("#inputs input").each(function (index, input) {
+          if (input.type == "file") {
+            files[$(input).attr("placeholder")] = input.files[0];
           } else {
-            params[$(input).attr('placeholder')] = $(input).val();
+            params[$(input).attr("placeholder")] = $(input).val();
           }
         });
         doSend(clicked, params, files);
-        $('#themodal').modal('hide');
+        $("#themodal").modal("hide");
       });
     });
   </script>
