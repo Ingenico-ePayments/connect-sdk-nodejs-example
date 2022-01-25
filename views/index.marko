@@ -223,6 +223,7 @@
                 <li class="list-group-item"><a href="#" data-operation="iinDetails">Get IIN details</a></li>
                 <li class="list-group-item"><a href="#" data-operation="getPrivacyPolicy">Get Privacy Policy</a></li>
                 <li class="list-group-item"><a href="#" data-operation="testConnection">Test connection</a></li>
+                <li class="list-group-item"><a href="#" data-operation="getSettlementDetails">Get Settlement details</a></li>
               </ul>
             </div>
           </div>
@@ -673,6 +674,12 @@
       operations.testConnection = {
         href: "/services/testconnection",
         uriParameters: [  ],
+        queryParameters: [  ],
+        formParameters: {  }
+      };
+      operations.getSettlementDetails = {
+        href: "/services/settlementdetails",
+        uriParameters: [ "paymentId" ],
         queryParameters: [  ],
         formParameters: {  }
       };

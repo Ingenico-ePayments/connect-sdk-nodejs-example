@@ -537,6 +537,11 @@ app.get("/services/testconnection", function (req, res) {
     render(res, error, sdkResponse);
   });
 });
+app.get("/services/settlementdetails/:paymentId", function (req, res) {
+  connectSdk.services.settlementdetails(merchantId, req.params.paymentId, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
 
 // Tokens
 app.get("/tokens/create", function (req, res) {
