@@ -1,8 +1,24 @@
 var log4js = require('log4js');
 
-log4js.clearAppenders();
-log4js.loadAppender('file');
-log4js.addAppender(log4js.appenders.file('logfile.txt'), 'my app');
+log4js.configure({
+  appenders: {
+    file: {
+      type: 'file',
+      filename: 'logfile.txt'
+    }
+  },
+  categories: {
+    'my-app': {
+      appenders: [ 'file' ],
+      level: 'debug'
+    },
+    default: {
+      appenders: [ 'file' ],
+      level: 'info'
+    }
+  }
+});
+
 var logger = log4js.getLogger('my app');
 
 module.exports = logger;
