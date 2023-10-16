@@ -1,0 +1,9 @@
+{
+  "amountOfMoney" : {
+    "currencyCode" : "EUR",
+    "amount" : 123
+  },
+  "countryCode" : "NL",
+  "paymentProductId" : 123,
+  "bin" : "123455"
+}

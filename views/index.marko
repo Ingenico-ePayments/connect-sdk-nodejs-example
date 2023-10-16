@@ -278,6 +278,20 @@
             </div>
           </div>
           <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingInstallments">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseInstallments" aria-expanded="true" aria-controls="collapseInstallments">
+                  Installments
+                </a>
+              </h4>
+            </div>
+            <div id="collapseInstallments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingInstallments">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" data-operation="getInstallmentsInfo">Get installment Information</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingFiles">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFiles" aria-expanded="true" aria-controls="collapseFiles">
@@ -744,6 +758,12 @@
       };
       operations.createSession = {
         href: "/sessions/create",
+        uriParameters: [  ],
+        queryParameters: [  ],
+        formParameters: {  }
+      };
+      operations.getInstallmentsInfo = {
+        href: "/installments/getInstallmentsInfo",
         uriParameters: [  ],
         queryParameters: [  ],
         formParameters: {  }

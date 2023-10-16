@@ -41,6 +41,7 @@ var approveSepaDirectDebitTokenStub = require("./stubs/tokens/approvesepadirectd
 var createMandateStub = require("./stubs/mandates/create.json");
 var createMandateWithReferenceStub = require("./stubs/mandates/createWithMandateReference.json");
 var createSessionStub = require("./stubs/sessions/create.json");
+var getInstallmentsInfoStub = require("./stubs/installments/getInstallmentsInfo.json");
 
 var config = require("./config.json");
 
@@ -608,6 +609,13 @@ app.get("/mandates/revoke/:uniqueMandateReference", function (req, res) {
 // Sessions
 app.get("/sessions/create", function (req, res) {
   connectSdk.sessions.create(merchantId, createSessionStub, null, function (error, sdkResponse) {
+    render(res, error, sdkResponse);
+  });
+});
+
+// Installments
+app.get("/installments/getInstallmentsInfo", function (req, res) {
+  connectSdk.installments.getInstallmentsInfo(merchantId, getInstallmentsInfoStub, null, function (error, sdkResponse) {
     render(res, error, sdkResponse);
   });
 });
