@@ -1,5 +1,7 @@
 # Ingenico Connect Node.js example
 
+**This SDK example has been rebranded to Worldline. As part of the rebranding the example has moved to https://github.com/Worldline-Global-Collect/connect-sdk-nodejs-example.**
+
 ## Introduction
 
 The Node.js SDK example helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. Its primary features are:
